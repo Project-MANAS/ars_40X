@@ -15,14 +15,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-include_directories(include)
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(socket_can REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+include_directories(include)
+include_directories(${socket_can_INCLUDE_DIRS})
 
 add_library(continental_radar_msg
     src/continental_radar_msg.cpp
@@ -32,9 +33,7 @@ add_executable(continental_radar_can
     src/continental_radar_can.cpp
 )
 
-ament_target_dependencies(continental_radar_can
-    socket_can
-)
+target_link_libraries(continental_radar_can ${socket_can_LIBRARIES})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

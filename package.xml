@@ -4,10 +4,12 @@
   <name>continental_radar</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="shiveshkhaitan@gmail.com">shivesh</maintainer>
+  <maintainer email="shiveshkhaitan@gmail.com">shiveshkhaitan</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>socket_can</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
