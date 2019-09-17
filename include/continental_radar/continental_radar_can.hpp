@@ -7,7 +7,8 @@
 
 #include <socket_can/socket_can.hpp>
 
-#include "continental_radar/continental_radar_msg.hpp"
+#include "continental_radar/radar_state.hpp"
+#include "continental_radar/radar_cfg.hpp"
 
 #include <stdint.h>
 
@@ -21,10 +22,14 @@ class ContinentalRadarCAN {
 
   virtual bool receive_radar_data();
 
+  virtual bool send_radar_data();
+
  private:
   socket_can::SocketCAN can;
 
-  radar_status radar_status_msg;
+  radar_state::RadarState radar_state;
+
+  radar_cfg::RadarCfg radar_cfg;
 };
 }
 

@@ -26,12 +26,16 @@ include_directories(include)
 include_directories(${socket_can_INCLUDE_DIRS})
 
 add_library(continental_radar_msg
-    src/continental_radar_msg.cpp
+  src/radar_state.cpp
+  src/radar_cfg.cpp
+  src/motion_input_signals.cpp
 )
 
 add_executable(continental_radar_can
-    src/continental_radar_can.cpp
+  src/continental_radar_can.cpp
 )
+
+target_link_libraries(continental_radar_can continental_radar_msg)
 
 target_link_libraries(continental_radar_can ${socket_can_LIBRARIES})
 
