@@ -29,6 +29,8 @@ add_library(continental_radar_msg
   src/radar_state.cpp
   src/radar_cfg.cpp
   src/motion_input_signals.cpp
+  src/cluster_list.cpp
+  src/object_list.cpp
 )
 
 add_executable(continental_radar_can

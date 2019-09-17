@@ -25,6 +25,7 @@ RadarCfg::~RadarCfg() {
 }
 
 void RadarCfg::set_max_distance(uint64_t distance, bool valid) {
+  distance /= 2;
   radar_cfg_msg.data.RadarCfg_MaxDistance1 = distance >> 2;
   radar_cfg_msg.data.RadarCfg_MaxDistance2 = distance & 0b11;
   radar_cfg_msg.data.RadarCfg_MaxDistance_valid = static_cast<uint64_t>(valid);

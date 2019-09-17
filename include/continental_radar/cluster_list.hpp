@@ -9,8 +9,9 @@
 
 namespace continental_radar
 {
-
-typedef struct Cluster_DynProp {
+namespace cluster_list
+{
+typedef enum Cluster_DynProp {
   MOVING = 0x0,
   STATIONARY = 0x1,
   ONCOMING = 0x2,
@@ -21,15 +22,15 @@ typedef struct Cluster_DynProp {
   STOPPED = 0x7,
 } Cluster_DynProp;
 
-typedef struct Cluster_AmbigState {
+typedef enum Cluster_AmbigState {
   INVALID = 0x0,
   AMBIGUOUS = 0x1,
   STAGGERED_RAMP = 0x2,
   UNAMBIGUOUS = 0x3,
-  STATIONARY = 0x4,
-};
+  STATIONARY_CANDIDATES = 0x4,
+} Cluster_AmbigState;
 
-typedef struct Cluster_InvalidState {
+typedef enum Cluster_InvalidState {
   VALID = 0x00,
   INVALID_LOW_RCS = 0x01,
   INVALID_NEAR_FIELD_ARTEFACT = 0x02,
@@ -48,7 +49,7 @@ typedef struct Cluster_InvalidState {
   VALID_ABOVE_95_M = 0x0F,
   VALID_HIGH_MULTI_TARGET_PROBABILITY = 0x10,
   VALID_SUSPICIOUS_ANGLE = 0x11,
-};
+} Cluster_InvalidState;
 
 typedef union cluster_0_status {
   struct {
@@ -68,7 +69,7 @@ typedef union cluster_1_general {
     uint64_t Cluster_ID:8;
     uint64_t Cluster_DistLong1:8;
     uint64_t Cluster_DistLat1:2;
-    uint64_t Reserved:1
+    uint64_t Reserved:1;
     uint64_t Cluster_DistLong2:5;
     uint64_t Cluster_DistLat2:8;
     uint64_t Cluster_VrelLong1:8;
@@ -114,7 +115,7 @@ class Cluster_0_Status
 
   int get_interface_version();
 
-  cluster_0_status get_cluster_0_status();
+  cluster_0_status * get_cluster_0_status();
 
  private:
   cluster_0_status cluster_0_status_msg;
@@ -137,11 +138,11 @@ class Cluster_1_General
 
   double get_cluster_lat_rel_vel();
 
-  double get_cluster_lat_rel_vel();
+  Cluster_DynProp get_cluster_dyn_prop();
 
-  Cluster_DynProp get_dyn_prop();
+  double get_cluster_rcs();
 
-  double get_rcs();
+  cluster_1_general * get_cluster_1_general();
 
  private:
   cluster_1_general cluster_1_general_msg;
@@ -170,9 +171,12 @@ class Cluster_2_Quality
 
   Cluster_InvalidState get_cluster_validity_state();
 
+  cluster_2_quality * get_cluster_2_quality();
+
  private:
   cluster_2_quality cluster_2_quality_msg;
 };
+}
 }
 
 #endif //CONTINENTAL_RADAR_CLUSTER_LIST_HPP

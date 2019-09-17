@@ -30,10 +30,8 @@ bool RadarState::get_write_status()
 
 uint64_t RadarState::get_max_distance()
 {
-  printf("first %d second %d\n", radar_state_msg.data.RadarState_MaxDistanceCfg1, radar_state_msg.data.RadarState_MaxDistanceCfg2);
-
-  return radar_state_msg.data.RadarState_MaxDistanceCfg1 << 2 |
-    radar_state_msg.data.RadarState_MaxDistanceCfg2;
+  return (radar_state_msg.data.RadarState_MaxDistanceCfg1 << 2 |
+    radar_state_msg.data.RadarState_MaxDistanceCfg2) * 2;
 }
 
 bool RadarState::get_persistent_error_status()
