@@ -38,6 +38,8 @@ include_directories(${socket_can_INCLUDE_DIRS})
 if ($ENV{ROS_VERSION} EQUAL 1)
   add_message_files(DIRECTORY msg
     FILES
+    Cluster.msg
+    ClusterList.msg
     Object.msg
     ObjectList.msg
   )

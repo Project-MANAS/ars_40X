@@ -8,6 +8,8 @@
 #include <ros/ros.h>
 #include <thread>
 
+#include "continental_radar/Cluster.h"
+#include "continental_radar/ClusterList.h"
 #include "continental_radar/Object.h"
 #include "continental_radar/ObjectList.h"
 #include "continental_radar/continental_radar_can.hpp"
@@ -24,6 +26,10 @@ class ContinentalRadarROS : public ContinentalRadarCAN {
 
   void run();
 
+  void send_cluster_0_status() override;
+
+  void send_cluster_1_general() override;
+
   void send_object_0_status() override;
 
   void send_object_1_general() override;
@@ -33,9 +39,15 @@ class ContinentalRadarROS : public ContinentalRadarCAN {
  private:
   ros::NodeHandle nh_;
 
+  ros::Publisher clusters_data_pub_;
+
   ros::Publisher objects_data_pub_;
 
+  ClusterList cluster_list;
+
   ObjectList object_list;
+
+  int cluster_id_;
 
   int object_id_;
 

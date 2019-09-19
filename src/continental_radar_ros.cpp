@@ -20,9 +20,26 @@ void ContinentalRadarROS::receive_data() {
 }
 
 void ContinentalRadarROS::run() {
+  clusters_data_pub_ = nh_.advertise<continental_radar::ClusterList>("continental_radar/clusters", 10);
   objects_data_pub_ = nh_.advertise<continental_radar::ObjectList>("continental_radar/objects", 10);
   receive_data_thread = std::thread(std::bind(&ContinentalRadarROS::receive_data, this));
   receive_data_thread.detach();
+}
+
+void ContinentalRadarROS::send_cluster_0_status() {
+  cluster_list.header.stamp = ros::Time::now();
+  clusters_data_pub_.publish(cluster_list);
+  cluster_list.clusters.clear();
+}
+
+void ContinentalRadarROS::send_cluster_1_general() {
+  Cluster cluster;
+  cluster.id = get_cluster_1_general()->get_cluster_id();
+  cluster.position.x = get_cluster_1_general()->get_cluster_long_dist();
+  cluster.position.y = get_cluster_1_general()->get_cluster_lat_dist();
+  cluster.relative_velocity.x = get_cluster_1_general()->get_cluster_long_rel_vel();
+  cluster.relative_velocity.y = get_cluster_1_general()->get_cluster_lat_rel_vel();
+  cluster_list.clusters.push_back(cluster);
 }
 
 void ContinentalRadarROS::send_object_0_status() {
@@ -46,6 +63,7 @@ void ContinentalRadarROS::send_object_3_extended(){
   object_list.objects[object_id_].length = get_object_3_extended()->get_object_length();
   object_list.objects[object_id_].width = get_object_3_extended()->get_object_width();
   object_list.objects[object_id_].orientation_angle = get_object_3_extended()->get_object_orientation_angle();
+  object_list.objects[object_id_].class_type = get_object_3_extended()->get_object_class();
   ++object_id_;
 }
 }

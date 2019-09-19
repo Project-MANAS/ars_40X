@@ -45,6 +45,10 @@ class ContinentalRadarCAN {
 
   object_list::Object_3_Extended * get_object_3_extended();
 
+  virtual void send_cluster_0_status() {};
+
+  virtual void send_cluster_1_general() {};
+
   virtual void send_object_0_status() {};
 
   virtual void send_object_1_general() {};

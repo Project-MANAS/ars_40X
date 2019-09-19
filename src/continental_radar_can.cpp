@@ -70,6 +70,7 @@ bool ContinentalRadarCAN::receive_radar_data()
       printf("mesurement cycle%d\n", cluster_0_status_.get_measurement_cycle_counter());
       printf("interface version%d\n", cluster_0_status_.get_interface_version());
       printf("\n");
+      send_cluster_0_status();
       break;
 
     case 0x701:
@@ -82,6 +83,7 @@ bool ContinentalRadarCAN::receive_radar_data()
       printf("Dyn Prop%d\n", cluster_1_general_.get_cluster_dyn_prop());
       printf("RCS %f\n", cluster_1_general_.get_cluster_rcs());
       printf("\n");
+      send_cluster_1_general();
       break;
 
     case 0x60A:
