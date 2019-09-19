@@ -93,5 +93,13 @@ cluster_1_general * Cluster_1_General::get_cluster_1_general()
 {
   return & cluster_1_general_msg;
 }
+
+Cluster_2_Quality::Cluster_2_Quality()
+{
+}
+
+Cluster_2_Quality::~Cluster_2_Quality()
+{
+}
 }
 }
