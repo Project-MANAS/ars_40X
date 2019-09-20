@@ -5,7 +5,8 @@
 #include "continental_radar/continental_radar_ros.hpp"
 
 namespace continental_radar {
-ContinentalRadarROS::ContinentalRadarROS() {
+ContinentalRadarROS::ContinentalRadarROS()
+{
 }
 
 ContinentalRadarROS::~ContinentalRadarROS() {
@@ -19,9 +20,30 @@ void ContinentalRadarROS::receive_data() {
   }
 }
 
+void ContinentalRadarROS::odom_callback(nav_msgs::Odometry msg) {
+  double speed = msg.twist.twist.linear.x;
+  get_speed_information()->set_speed(std::abs(speed));
+  if (speed < 0.0) {
+    get_speed_information()->set_speed_direction(motion_input_signals::BACKWARD);
+  } else if (speed > 0.0) {
+    get_speed_information()->set_speed_direction(motion_input_signals::FORWARD);
+  } else {
+    get_speed_information()->set_speed_direction(motion_input_signals::STANDSTILL);
+  }
+  send_radar_data(0x300);
+
+  double yaw_rate = msg.twist.twist.angular.z - yaw_vel_prev_;
+  yaw_rate /= (msg.header.stamp.toSec() - yaw_vel_time_prev_);
+  get_yaw_rate_information()->set_yaw_rate(yaw_rate);
+  send_radar_data(0x301);
+  yaw_vel_prev_ = msg.twist.twist.angular.z;
+  yaw_vel_time_prev_ = msg.header.stamp.toSec();
+}
+
 void ContinentalRadarROS::run() {
   clusters_data_pub_ = nh_.advertise<continental_radar::ClusterList>("continental_radar/clusters", 10);
   objects_data_pub_ = nh_.advertise<continental_radar::ObjectList>("continental_radar/objects", 10);
+  odom_sub_ = nh_.subscribe("odom", 10, &ContinentalRadarROS::odom_callback, this);
   receive_data_thread = std::thread(std::bind(&ContinentalRadarROS::receive_data, this));
   receive_data_thread.detach();
 }

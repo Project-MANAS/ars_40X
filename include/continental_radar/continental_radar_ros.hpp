@@ -8,6 +8,8 @@
 #include <ros/ros.h>
 #include <thread>
 
+#include <nav_msgs/Odometry.h>
+
 #include "continental_radar/Cluster.h"
 #include "continental_radar/ClusterList.h"
 #include "continental_radar/Object.h"
@@ -26,6 +28,8 @@ class ContinentalRadarROS : public ContinentalRadarCAN {
 
   void run();
 
+  void odom_callback(nav_msgs::Odometry msg);
+
   void send_cluster_0_status() override;
 
   void send_cluster_1_general() override;
@@ -43,13 +47,17 @@ class ContinentalRadarROS : public ContinentalRadarCAN {
 
   ros::Publisher objects_data_pub_;
 
+  ros::Subscriber odom_sub_;
+
   ClusterList cluster_list;
 
   ObjectList object_list;
 
-  int cluster_id_;
-
   int object_id_;
+
+  double yaw_vel_prev_;
+
+  double yaw_vel_time_prev_;
 
   std::thread receive_data_thread;
 };

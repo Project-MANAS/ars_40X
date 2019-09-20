@@ -6,6 +6,8 @@
 
 namespace continental_radar
 {
+namespace motion_input_signals
+{
 SpeedInformation::SpeedInformation()
 {
 }
@@ -14,15 +16,20 @@ SpeedInformation::~SpeedInformation()
 {
 }
 
-void SpeedInformation::set_speed(uint64_t speed)
+void SpeedInformation::set_speed(double speed)
 {
-  speed_information_msg.data.RadarDevice_Speed1 = speed >> 8;
-  speed_information_msg.data.RadarDevice_Speed2 = speed & 0b11111111;
+  int radar_speed = static_cast<int>(speed / 0.02);
+  speed_information_msg.data.RadarDevice_Speed1 = static_cast<uint64_t>(radar_speed >> 8);
+  speed_information_msg.data.RadarDevice_Speed2 = static_cast<uint64_t>(radar_speed & 255);
 }
 
 void SpeedInformation::set_speed_direction(RadarDevice_SpeedDirection direction)
 {
   speed_information_msg.data.RadarDevice_SpeedDirection = direction;
+}
+
+speed_information * SpeedInformation::get_speed_information() {
+  return & speed_information_msg;
 }
 
 YawRateInformation::YawRateInformation()
@@ -33,9 +40,15 @@ YawRateInformation::~YawRateInformation()
 {
 }
 
-void YawRateInformation::set_yaw_rate(uint64_t yaw_rate)
+void YawRateInformation::set_yaw_rate(double yaw_rate)
 {
-  yaw_rate_information_msg.data.RadarDevice_YawRate1 = yaw_rate >> 8;
-  yaw_rate_information_msg.data.RadarDevice_YawRate2 = yaw_rate & 0b11111111;
+  int radar_yaw_rate = static_cast<int>(yaw_rate / 0.01);
+  yaw_rate_information_msg.data.RadarDevice_YawRate1 = static_cast<uint64_t>(radar_yaw_rate >> 8);
+  yaw_rate_information_msg.data.RadarDevice_YawRate2 = static_cast<uint64_t>(radar_yaw_rate & 255);
+}
+
+yaw_rate_information * YawRateInformation::get_yaw_rate_information() {
+  return & yaw_rate_information_msg;
+}
 }
 }

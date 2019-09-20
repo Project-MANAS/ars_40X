@@ -144,19 +144,17 @@ bool ContinentalRadarCAN::send_radar_data(uint32_t frame_id) {
     case 0x200:
       can_.write(frame_id, 8, radar_cfg_.get_radar_cfg()->raw_data);
       break;
+    case 0x300:
+      can_.write(frame_id, 2, speed_information_.get_speed_information()->raw_data);
+      break;
+    case 0x301:
+      can_.write(frame_id, 2, yaw_rate_information_.get_yaw_rate_information()->raw_data);
+      break;
 #if DEBUG
     default: printf("Frame ID not supported\n");
 #endif
   }
   return true;
-}
-
-radar_state::RadarState * ContinentalRadarCAN::get_radar_state() {
-  return & radar_state_;
-}
-
-radar_cfg::RadarCfg * ContinentalRadarCAN::get_radar_cfg(){
-  return & radar_cfg_;
 }
 
 cluster_list::Cluster_0_Status * ContinentalRadarCAN::get_cluster_0_status() {
@@ -171,6 +169,14 @@ cluster_list::Cluster_2_Quality * ContinentalRadarCAN::get_cluster_2_quality() {
   return & cluster_2_quality_;
 }
 
+motion_input_signals::SpeedInformation * ContinentalRadarCAN::get_speed_information() {
+  return & speed_information_;
+}
+
+motion_input_signals::YawRateInformation * ContinentalRadarCAN::get_yaw_rate_information() {
+  return & yaw_rate_information_;
+}
+
 object_list::Object_0_Status * ContinentalRadarCAN::get_object_0_status() {
   return & object_0_status_;
 }
@@ -181,5 +187,13 @@ object_list::Object_1_General * ContinentalRadarCAN::get_object_1_general() {
 
 object_list::Object_3_Extended * ContinentalRadarCAN::get_object_3_extended() {
   return & object_3_extended_;
+}
+
+radar_state::RadarState * ContinentalRadarCAN::get_radar_state() {
+  return & radar_state_;
+}
+
+radar_cfg::RadarCfg * ContinentalRadarCAN::get_radar_cfg(){
+  return & radar_cfg_;
 }
 }

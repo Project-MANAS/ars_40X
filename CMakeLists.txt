@@ -27,9 +27,10 @@ else()
   find_package(rclcpp REQUIRED)
 endif()
 
+find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(socket_can REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
 include_directories(include)
