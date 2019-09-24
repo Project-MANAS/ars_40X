@@ -1,7 +1,11 @@
 uint8 id
 
 geometry_msgs/Point position
-geometry_msgs/Vector3 relative_velocity
+geometry_msgs/Point position_covariance
+geometry_msgs/Point relative_velocity
+geometry_msgs/Point relative_velocity_covariance
+geometry_msgs/Point relative_acceleration
+geometry_msgs/Point relative_acceleration_covariance
 
 float32 length
 float32 width

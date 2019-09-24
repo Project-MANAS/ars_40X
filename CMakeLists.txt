@@ -80,7 +80,7 @@ add_executable(continental_radar_ros
 )
 
 add_executable(continental_radar_rviz
-  src/radar_viz.cpp
+  src/continental_radar_rviz.cpp
 )
 target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})
 
