@@ -31,6 +31,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(socket_can REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
 include_directories(include)
@@ -43,6 +44,17 @@ if ($ENV{ROS_VERSION} EQUAL 1)
     ClusterList.msg
     Object.msg
     ObjectList.msg
+    RadarStatus.msg
+  )
+
+  add_service_files(
+    FILES
+    MaxDistance.srv
+    OutputType.srv
+    RadarPower.srv
+    RCSThreshold.srv
+    SensorID.srv
+    SortIndex.srv
   )
 
   generate_messages(DEPENDENCIES std_msgs geometry_msgs)
@@ -62,11 +74,11 @@ if ($ENV{ROS_VERSION} EQUAL 1)
 endif()
 
 add_library(continental_radar_msg
-  src/radar_state.cpp
-  src/radar_cfg.cpp
-  src/motion_input_signals.cpp
   src/cluster_list.cpp
+  src/motion_input_signals.cpp
   src/object_list.cpp
+  src/radar_cfg.cpp
+  src/radar_state.cpp
 )
 
 add_library(continental_radar_can
@@ -76,11 +88,16 @@ add_library(continental_radar_can
 target_link_libraries(continental_radar_can continental_radar_msg ${socket_can_LIBRARIES})
 
 add_executable(continental_radar_ros
-  src/continental_radar_ros.cpp
+  src/ros/continental_radar_ros.cpp
+  src/ros/cluster_list_ros.cpp
+  src/ros/motion_input_signals_ros.cpp
+  src/ros/object_list_ros.cpp
+  src/ros/radar_cfg_ros.cpp
+  src/ros/radar_state_ros.cpp
 )
 
 add_executable(continental_radar_rviz
-  src/continental_radar_rviz.cpp
+    src/ros/continental_radar_rviz.cpp
 )
 target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})
 

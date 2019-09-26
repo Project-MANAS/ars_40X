@@ -92,23 +92,20 @@ object_1_general * Object_1_General::get_object_1_general()
   return & object_1_general_msg;
 }
 
+Object_2_Quality::Object_2_Quality()
+{
+}
+
+Object_2_Quality::~Object_2_Quality()
+{
+}
+
 Object_3_Extended::Object_3_Extended()
 {
 }
 
 Object_3_Extended::~Object_3_Extended()
 {
-}
-
-int Object_3_Extended::get_object_id()
-{
-  return static_cast<int>(object_3_extended_msg.data.Object_ID);
-}
-
-double Object_3_Extended::get_object_long_rel_accel()
-{
-  return (object_3_extended_msg.data.Object_ArelLong1 << 3 |
-      object_3_extended_msg.data.Object_ArelLong2) * 0.01 - 10.0;
 }
 
 double Object_3_Extended::get_object_lat_rel_accel()

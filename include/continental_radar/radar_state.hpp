@@ -103,7 +103,7 @@ class RadarState
 
   RadarState_SortIndex get_sort_index();
 
-  RadarState_RadarPowerCfg get_power_cfg();
+  RadarState_RadarPowerCfg get_radar_power_cfg();
 
   bool get_ctrl_relay_cfg();
 

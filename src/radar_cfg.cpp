@@ -25,6 +25,7 @@ RadarCfg::~RadarCfg() {
 }
 
 void RadarCfg::set_max_distance(uint64_t distance, bool valid) {
+  distance = std::max(static_cast<uint64_t>(90), std::min(distance, static_cast<uint64_t>(1000)));
   distance /= 2;
   radar_cfg_msg.data.RadarCfg_MaxDistance1 = distance >> 2;
   radar_cfg_msg.data.RadarCfg_MaxDistance2 = distance & 0b11;
@@ -32,7 +33,7 @@ void RadarCfg::set_max_distance(uint64_t distance, bool valid) {
 }
 
 void RadarCfg::set_sensor_id(uint64_t id, bool valid) {
-  radar_cfg_msg.data.RadarCfg_SensorID = id;
+  radar_cfg_msg.data.RadarCfg_SensorID = std::max(static_cast<uint64_t>(0), std::min(id, static_cast<uint64_t>(7)));
   radar_cfg_msg.data.RadarCfg_SensorID_valid = static_cast<uint64_t>(valid);
 }
 
@@ -56,7 +57,7 @@ void RadarCfg::set_send_ext_info(bool send_ext, bool valid) {
   radar_cfg_msg.data.RadarCfg_SendExtInfo_valid = static_cast<uint64_t>(valid);
 }
 
-void RadarCfg::set_sort_index(bool sort_index, bool valid) {
+void RadarCfg::set_sort_index(RadarCfg_SortIndex sort_index, bool valid) {
   radar_cfg_msg.data.RadarCfg_SortIndex = static_cast<uint64_t>(sort_index);
   radar_cfg_msg.data.RadarCfg_SortIndex_valid = static_cast<uint64_t>(valid);
 }

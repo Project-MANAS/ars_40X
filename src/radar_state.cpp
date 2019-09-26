@@ -69,7 +69,7 @@ RadarState_SortIndex RadarState::get_sort_index()
   return static_cast<RadarState_SortIndex>(radar_state_msg.data.RadarState_SortIndex);
 }
 
-RadarState_RadarPowerCfg RadarState::get_power_cfg()
+RadarState_RadarPowerCfg RadarState::get_radar_power_cfg()
 {
   return static_cast<RadarState_RadarPowerCfg>(
     (radar_state_msg.data.RadarState_RadarPowerCfg1 << 1)

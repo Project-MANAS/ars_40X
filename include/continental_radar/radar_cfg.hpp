@@ -5,6 +5,7 @@
 #ifndef CONTINENTAL_RADAR_RADAR_CFG_HPP
 #define CONTINENTAL_RADAR_RADAR_CFG_HPP
 
+#include <algorithm>
 #include <cstdint>
 
 namespace continental_radar
@@ -85,7 +86,7 @@ class RadarCfg {
 
   void set_send_ext_info(bool send_ext, bool valid = true);
 
-  void set_sort_index(bool sort_index, bool valid = true);
+  void set_sort_index(RadarCfg_SortIndex sort_index, bool valid = true);
 
   void set_ctrl_relay_cfg(bool ctrl_relay, bool valid = true);
 

@@ -7,7 +7,7 @@
 
 #include "continental_radar/ClusterList.h"
 #include "continental_radar/ObjectList.h"
-#include "continental_radar/continental_radar_rviz.hpp"
+#include "continental_radar/ros/continental_radar_rviz.hpp"
 
 namespace continental_radar
 {

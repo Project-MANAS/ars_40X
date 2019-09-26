@@ -1,0 +1,6 @@
+# none
+# send objects
+# send clusters
+
+uint8 output_type
+---

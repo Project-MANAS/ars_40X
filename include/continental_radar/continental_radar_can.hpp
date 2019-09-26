@@ -15,9 +15,34 @@
 
 #include <cstdint>
 #include <string>
+#include <iostream>
 
 namespace continental_radar
 {
+typedef enum can_messages {
+  RadarCfg = 0x200,
+  RadarState = 0x201,
+  FilterCfg = 0x202,
+  FilterState_Header = 0x203,
+  FilterState_Cfg = 0x204,
+  CollDetCfg = 0x400,
+  CollDetRegionCfg = 0x401,
+  CollDetState = 0x408,
+  CollDetRegionState = 0x402,
+  SpeedInformation = 0x300,
+  YawRateInformation = 0x301,
+  Cluster_0_Status = 0x600,
+  Cluster_1_General = 0x701,
+  Cluster_2_Quality = 0x702,
+  Object_0_Status = 0x60A,
+  Object_1_General = 0x60B,
+  Object_2_Quality = 0x60C,
+  Object_3_Extended = 0x60D,
+  Object_4_Warning = 0x60E,
+  VersionID = 0x700,
+  CollDetRelayCtrl = 0x8,
+} can_messages;
+
 class ContinentalRadarCAN {
  public:
   ContinentalRadarCAN();
@@ -44,6 +69,8 @@ class ContinentalRadarCAN {
 
   object_list::Object_1_General * get_object_1_general();
 
+  object_list::Object_2_Quality * get_object_2_quality();
+
   object_list::Object_3_Extended * get_object_3_extended();
 
   radar_state::RadarState * get_radar_state();
@@ -59,6 +86,8 @@ class ContinentalRadarCAN {
   virtual void send_object_1_general() {};
 
   virtual void send_object_3_extended() {};
+
+  virtual void send_radar_state() {};
 
  private:
   socket_can::SocketCAN can_;
@@ -76,6 +105,8 @@ class ContinentalRadarCAN {
   object_list::Object_0_Status object_0_status_;
 
   object_list::Object_1_General object_1_general_;
+
+  object_list::Object_2_Quality object_2_quality_;
 
   object_list::Object_3_Extended object_3_extended_;
 

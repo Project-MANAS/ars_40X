@@ -1,0 +1,13 @@
+# Maximum distance of far scan (near scan maximum
+# distance is set proportionally to half of the far scan).
+# The maximum distance will also change the range
+# resolution proportionally. For example, 200 m
+# maximum distance will lead to:
+# - far scan 200 m with 1.79 m range resolution,
+# - near scan 100 m with 0.42 m range resolution.
+
+# Standard Range: 150 – 190 m
+# Extended Range: 90 – 1000 m
+
+uint8 max_distance
+---

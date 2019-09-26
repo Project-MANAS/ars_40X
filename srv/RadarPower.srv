@@ -1,0 +1,13 @@
+# Configures the transmitted radar power (Tx
+# attenuation). The output RCS of cluster and objects
+# will be compensated for this attenuation. Reducing
+# the output power can improve detection in case of
+# close range scenarios or inside rooms.
+#
+# Standard
+# -3dB Tx gain
+# -6dB Tx gain
+# -9dB Tx gain
+
+uint8 radar_power
+---
