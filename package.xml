@@ -9,6 +9,8 @@
 
   <buildtool_depend condition="$ROS_VERSION==1">catkin</buildtool_depend>
   <buildtool_depend condition="$ROS_VERSION==2">ament_cmake</buildtool_depend>
+  <build_depend condition="$ROS_VERSION == 1">message_generation</build_depend>
+  <build_export_depend condition="$ROS_VERSION == 1">message_runtime</build_export_depend>
 
   <depend>costmap_converter</depend>
   <depend>geometry_msgs</depend>
@@ -20,8 +22,6 @@
   <depend condition="$ROS_VERSION == 1">roscpp</depend>
   <depend condition="$ROS_VERSION == 2">rclcpp</depend>
 
-  <build_depend condition="$ROS_VERSION == 1">message_generation</build_depend>
-  <build_export_depend condition="$ROS_VERSION == 1">message_runtime</build_export_depend>
   <exec_depend condition="$ROS_VERSION == 1">message_runtime</exec_depend>
 
   <test_depend condition="$ROS_VERSION == 2">ament_lint_auto</test_depend>

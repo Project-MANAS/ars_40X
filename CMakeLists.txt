@@ -35,9 +35,6 @@ find_package(std_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
-include_directories(include)
-include_directories(${socket_can_INCLUDE_DIRS})
-
 if ($ENV{ROS_VERSION} EQUAL 1)
   add_message_files(DIRECTORY msg
     FILES
@@ -66,6 +63,9 @@ if ($ENV{ROS_VERSION} EQUAL 1)
     LIBRARIES
       ${PROJECT_NAME}_can
       ${PROJECT_NAME}_msg
+      ${PROJECT_NAME}_ros
+      ${PROJECT_NAME}_rviz
+      object_array
     CATKIN_DEPENDS
       message_runtime
       roscpp
@@ -73,6 +73,9 @@ if ($ENV{ROS_VERSION} EQUAL 1)
   )
   include_directories(${catkin_INCLUDE_DIRS})
 endif()
+
+include_directories(include)
+include_directories(${socket_can_INCLUDE_DIRS})
 
 add_library(continental_radar_msg
   src/cluster_list.cpp
@@ -97,18 +100,21 @@ add_executable(continental_radar_ros
   src/ros/radar_state_ros.cpp
 )
 
+add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+
 add_executable(continental_radar_rviz
     src/ros/continental_radar_rviz.cpp
 )
+add_dependencies(continental_radar_rviz ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})
 
 add_executable(obstacle_array
   src/ros/obstacle_array.cpp
 )
+add_dependencies(obstacle_array ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(obstacle_array ${catkin_LIBRARIES})
 
 if ($ENV{ROS_VERSION} EQUAL 1)
-  add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
   target_link_libraries(continental_radar_ros continental_radar_can ${catkin_LIBRARIES})
 endif()
 
