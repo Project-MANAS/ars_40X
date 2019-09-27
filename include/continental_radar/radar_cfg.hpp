@@ -44,30 +44,6 @@ typedef union radar_cfg {
   uint8_t raw_data[8];
 } radar_cfg;
 
-typedef enum RadarCfg_RadarPower {
-  STANDARD = 0x0,
-  TX_GAIN_3dB = 0x1,
-  TX_GAIN_6dB = 0x2,
-  TX_GAIN_9dB = 0x3,
-} RadarCfg_RadarPower;
-
-typedef enum RadarCfg_OutputType {
-  NONE = 0x0,
-  SEND_OBJECTS = 0x1,
-  SEND_CLUSTERS = 0x2,
-} RadarCfg_OutputType;
-
-typedef enum RadarCfg_SortIndex {
-  NO_SORTING = 0x0,
-  SORTED_BY_RANGE = 0x1,
-  SORTED_BY_RCS = 0x2,
-} RadarCfg_SortIndex;
-
-typedef enum RadarCfg_RCS_Threshold {
-  STANDARD_SENSITIVITY = 0x0,
-  HIGH_SENSITIVITY = 0x1,
-} RadarCfg_RCS_Threshold;
-
 class RadarCfg {
  public:
   RadarCfg();
@@ -78,21 +54,21 @@ class RadarCfg {
 
   void set_sensor_id(uint64_t id, bool valid = true);
 
-  void set_radar_power(RadarCfg_RadarPower power, bool valid = true);
+  void set_radar_power(int power, bool valid = true);
 
-  void set_output_type(RadarCfg_OutputType output_type, bool valid = true);
+  void set_output_type(int output_type, bool valid = true);
 
   void set_send_quality(bool quality, bool valid = true);
 
   void set_send_ext_info(bool send_ext, bool valid = true);
 
-  void set_sort_index(RadarCfg_SortIndex sort_index, bool valid = true);
+  void set_sort_index(int sort_index, bool valid = true);
 
   void set_ctrl_relay_cfg(bool ctrl_relay, bool valid = true);
 
   void set_store_in_nvm(bool store_in_nvm, bool valid = true);
 
-  void set_rcs_threshold(RadarCfg_RCS_Threshold rcs_threshold, bool valid = true);
+  void set_rcs_threshold(int rcs_threshold, bool valid = true);
 
   radar_cfg * get_radar_cfg();
 

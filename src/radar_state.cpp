@@ -64,16 +64,14 @@ int RadarState::get_sensor_id()
   return static_cast<int>(radar_state_msg.data.RadarState_SensorID);
 }
 
-RadarState_SortIndex RadarState::get_sort_index()
+int RadarState::get_sort_index()
 {
-  return static_cast<RadarState_SortIndex>(radar_state_msg.data.RadarState_SortIndex);
+  return radar_state_msg.data.RadarState_SortIndex;
 }
 
-RadarState_RadarPowerCfg RadarState::get_radar_power_cfg()
+int RadarState::get_radar_power_cfg()
 {
-  return static_cast<RadarState_RadarPowerCfg>(
-    (radar_state_msg.data.RadarState_RadarPowerCfg1 << 1)
-    | radar_state_msg.data.RadarState_RadarPowerCfg2);
+  return ((radar_state_msg.data.RadarState_RadarPowerCfg1 << 1) | radar_state_msg.data.RadarState_RadarPowerCfg2);
 }
 
 bool RadarState::get_ctrl_relay_cfg()
@@ -81,9 +79,9 @@ bool RadarState::get_ctrl_relay_cfg()
   return static_cast<bool>(radar_state_msg.data.RadarState_CtrlRelayCfg);
 }
 
-RadarState_OutputTypeCfg RadarState::get_output_type_cfg()
+int RadarState::get_output_type_cfg()
 {
-  return static_cast<RadarState_OutputTypeCfg>(radar_state_msg.data.RadarState_OutputTypeCfg);
+  return radar_state_msg.data.RadarState_OutputTypeCfg;
 }
 
 bool RadarState::get_send_quality_cfg()
@@ -96,14 +94,14 @@ bool RadarState::get_ext_info_cfg()
   return static_cast<bool>(radar_state_msg.data.RadarState_SendExtInfoCfg);
 }
 
-RadarState_MotionRxState RadarState::get_motion_rx_state()
+int RadarState::get_motion_rx_state()
 {
-  return static_cast<RadarState_MotionRxState>(radar_state_msg.data.RadarState_MotionRxState);
+  return radar_state_msg.data.RadarState_MotionRxState;
 }
 
-RadarState_RCS_Threshold RadarState::get_rcs_threshold()
+int RadarState::get_rcs_threshold()
 {
-  return static_cast<RadarState_RCS_Threshold>(radar_state_msg.data.RadarState_RCS_Threshold);
+  return radar_state_msg.data.RadarState_RCS_Threshold;
 }
 
 radar_state * RadarState::get_radar_state()

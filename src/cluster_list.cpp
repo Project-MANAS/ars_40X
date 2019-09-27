@@ -79,9 +79,9 @@ double Cluster_1_General::get_cluster_lat_rel_vel()
       cluster_1_general_msg.data.Cluster_VrelLat2) * 0.25 - 64.0;
 }
 
-Cluster_DynProp Cluster_1_General::get_cluster_dyn_prop()
+int Cluster_1_General::get_cluster_dyn_prop()
 {
-  return static_cast<Cluster_DynProp>(cluster_1_general_msg.data.Cluster_DynProp);
+  return cluster_1_general_msg.data.Cluster_DynProp;
 }
 
 double Cluster_1_General::get_cluster_rcs()

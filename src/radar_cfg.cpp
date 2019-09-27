@@ -37,12 +37,12 @@ void RadarCfg::set_sensor_id(uint64_t id, bool valid) {
   radar_cfg_msg.data.RadarCfg_SensorID_valid = static_cast<uint64_t>(valid);
 }
 
-void RadarCfg::set_radar_power(RadarCfg_RadarPower power, bool valid) {
+void RadarCfg::set_radar_power(int power, bool valid) {
   radar_cfg_msg.data.RadarCfg_RadarPower = power;
   radar_cfg_msg.data.RadarCfg_RadarPower_valid = static_cast<uint64_t>(valid);
 }
 
-void RadarCfg::set_output_type(RadarCfg_OutputType output_type, bool valid) {
+void RadarCfg::set_output_type(int output_type, bool valid) {
   radar_cfg_msg.data.RadarCfg_OutputType = output_type;
   radar_cfg_msg.data.RadarCfg_OutputType_valid = static_cast<uint64_t>(valid);
 }
@@ -57,7 +57,7 @@ void RadarCfg::set_send_ext_info(bool send_ext, bool valid) {
   radar_cfg_msg.data.RadarCfg_SendExtInfo_valid = static_cast<uint64_t>(valid);
 }
 
-void RadarCfg::set_sort_index(RadarCfg_SortIndex sort_index, bool valid) {
+void RadarCfg::set_sort_index(int sort_index, bool valid) {
   radar_cfg_msg.data.RadarCfg_SortIndex = static_cast<uint64_t>(sort_index);
   radar_cfg_msg.data.RadarCfg_SortIndex_valid = static_cast<uint64_t>(valid);
 }
@@ -72,7 +72,7 @@ void RadarCfg::set_store_in_nvm(bool store_in_nvm, bool valid) {
   radar_cfg_msg.data.RadarCfg_StoreInNVM_valid = static_cast<uint64_t>(valid);
 }
 
-void RadarCfg::set_rcs_threshold(RadarCfg_RCS_Threshold rcs_threshold, bool valid) {
+void RadarCfg::set_rcs_threshold(int rcs_threshold, bool valid) {
   radar_cfg_msg.data.RadarCfg_RCS_Threshold = static_cast<uint64_t>(rcs_threshold);
   radar_cfg_msg.data.RadarCfg_RCS_Threshold_valid = static_cast<uint64_t>(valid);
 }

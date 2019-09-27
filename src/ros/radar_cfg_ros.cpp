@@ -45,7 +45,7 @@ bool RadarCfgROS::set_radar_power(
   RadarPower::Request& req,
   RadarPower::Response& /*res*/)
 {
-  radar_cfg_->set_radar_power(static_cast<radar_cfg::RadarCfg_RadarPower>(req.radar_power));
+  radar_cfg_->set_radar_power(req.radar_power);
   continental_radar_can_->send_radar_data(can_messages::RadarCfg);
 }
 
@@ -53,7 +53,7 @@ bool RadarCfgROS::set_output_type(
   OutputType::Request& req,
   OutputType::Response& /*res*/)
 {
-  radar_cfg_->set_output_type(static_cast<radar_cfg::RadarCfg_OutputType>(req.output_type));
+  radar_cfg_->set_output_type(req.output_type);
   continental_radar_can_->send_radar_data(can_messages::RadarCfg);
 }
 
@@ -77,7 +77,7 @@ bool RadarCfgROS::set_sort_index(
   SortIndex::Request& req,
   SortIndex::Response& /*res*/)
 {
-  radar_cfg_->set_sort_index(static_cast<radar_cfg::RadarCfg_SortIndex>(req.sort_index));
+  radar_cfg_->set_sort_index(req.sort_index);
   continental_radar_can_->send_radar_data(can_messages::RadarCfg);
 }
 
@@ -101,7 +101,7 @@ bool RadarCfgROS::set_rcs_threshold(
   RCSThreshold::Request& req,
   RCSThreshold::Response& /*res*/)
 {
-  radar_cfg_->set_rcs_threshold(static_cast<radar_cfg::RadarCfg_RCS_Threshold>(req.rcs_threshold));
+  radar_cfg_->set_rcs_threshold(req.rcs_threshold);
   continental_radar_can_->send_radar_data(can_messages::RadarCfg);
 }
 

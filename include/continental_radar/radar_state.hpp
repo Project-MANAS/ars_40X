@@ -45,37 +45,6 @@ typedef union radar_state {
   uint8_t raw_data[8];
 } radar_state;
 
-typedef enum RadarState_SortIndex {
-  NO_SORTING = 0x0,
-  SORTED_BY_RANGE = 0x1,
-  SORTED_BY_RCS = 0x2,
-} RadarState_SortIndex;
-
-typedef enum RadarState_RadarPowerCfg {
-  STANDARD = 0x0,
-  TX_GAIN_3dB = 0x1,
-  TX_GAIN_6dB = 0x2,
-  TX_GAIN_9dB = 0x3,
-} RadarState_RadarPowerCfg;
-
-typedef enum RadarState_OutputTypeCfg {
-  NONE = 0x0,
-  SEND_OBJECTS = 0x1,
-  SEND_CLUSTERS = 0x2,
-} RadarState_OutputTypeCfg;
-
-typedef enum RadarState_MotionRxState {
-  INPUT_OK = 0x0,
-  SPEED_MISSING = 0x1,
-  YAW_RATE_MISSING = 0x2,
-  SPEED_AND_YAW_RATE_MISSING = 0x3,
-} RadarState_MotionRxState;
-
-typedef enum RadarState_RCS_Threshold {
-  STANDARD_SENSITIVITY = 0x0,
-  HIGH_SENSITIVITY = 0x1,
-} RadarState_RCS_Threshold;
-
 class RadarState
 {
  public:
@@ -101,21 +70,21 @@ class RadarState
 
   int get_sensor_id();
 
-  RadarState_SortIndex get_sort_index();
+  int get_sort_index();
 
-  RadarState_RadarPowerCfg get_radar_power_cfg();
+  int get_radar_power_cfg();
 
   bool get_ctrl_relay_cfg();
 
-  RadarState_OutputTypeCfg get_output_type_cfg();
+  int get_output_type_cfg();
 
   bool get_send_quality_cfg();
 
   bool get_ext_info_cfg();
 
-  RadarState_MotionRxState get_motion_rx_state();
+  int get_motion_rx_state();
 
-  RadarState_RCS_Threshold get_rcs_threshold();
+  int get_rcs_threshold();
 
   radar_state * get_radar_state();
 

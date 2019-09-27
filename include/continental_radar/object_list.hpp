@@ -11,28 +11,6 @@ namespace continental_radar
 {
 namespace object_list
 {
-typedef enum Object_DynProp {
-  MOVING = 0x0,
-  STATIONARY = 0x1,
-  ONCOMING = 0x2,
-  STATIONARY_CANDIDATE = 0x3,
-  UNKNOWN = 0x4,
-  CROSSING_STATIONARY = 0x5,
-  CROSSING_MOVING = 0x6,
-  STOPPED = 0x7,
-} Object_DynProp;
-
-typedef enum Object_Class {
-  POINT = 0x0,
-  CAR = 0x1,
-  TRUCK = 0x2,
-  PEDESTRIAN = 0x3,
-  MOTORCYCLE = 0x4,
-  BICYCLE = 0x5,
-  WIDE = 0x6,
-  RESERVED = 0x7,
-} Object_Class;
-
 typedef union object_0_status {
   struct {
     uint64_t Object_NofObjects:8;
@@ -115,7 +93,7 @@ class Object_1_General
 
   double get_object_long_rel_vel();
 
-  Object_DynProp get_object_dyn_prop();
+  int get_object_dyn_prop();
 
   double get_object_lat_rel_vel();
 
@@ -169,7 +147,7 @@ class Object_3_Extended
 
   double get_object_lat_rel_accel();
 
-  Object_Class get_object_class();
+  int get_object_class();
 
   double get_object_orientation_angle();
 

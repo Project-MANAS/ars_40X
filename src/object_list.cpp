@@ -77,9 +77,9 @@ double Object_1_General::get_object_lat_rel_vel()
       object_1_general_msg.data.Object_VrelLat2)  * 0.25 - 64.0;
 }
 
-Object_DynProp Object_1_General::get_object_dyn_prop()
+int Object_1_General::get_object_dyn_prop()
 {
-  return static_cast<Object_DynProp>(object_1_general_msg.data.Object_DynProp);
+  return object_1_general_msg.data.Object_DynProp;
 }
 
 double Object_1_General::get_object_rcs()
@@ -120,9 +120,9 @@ double Object_3_Extended::get_object_orientation_angle()
       object_3_extended_msg.data.Object_OrientationAngle2) * 0.4 - 180.0;
 }
 
-Object_Class Object_3_Extended::get_object_class()
+int Object_3_Extended::get_object_class()
 {
-  return static_cast<Object_Class>(object_3_extended_msg.data.Object_Class);
+  return object_3_extended_msg.data.Object_Class;
 }
 
 double Object_3_Extended::get_object_length()

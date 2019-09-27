@@ -11,46 +11,6 @@ namespace continental_radar
 {
 namespace cluster_list
 {
-typedef enum Cluster_DynProp {
-  MOVING = 0x0,
-  STATIONARY = 0x1,
-  ONCOMING = 0x2,
-  STATIONARY_CANDIDATE = 0x3,
-  UNKNOWN = 0x4,
-  CROSSING_STATIONARY = 0x5,
-  CROSSING_MOVING = 0x6,
-  STOPPED = 0x7,
-} Cluster_DynProp;
-
-typedef enum Cluster_AmbigState {
-  INVALID = 0x0,
-  AMBIGUOUS = 0x1,
-  STAGGERED_RAMP = 0x2,
-  UNAMBIGUOUS = 0x3,
-  STATIONARY_CANDIDATES = 0x4,
-} Cluster_AmbigState;
-
-typedef enum Cluster_InvalidState {
-  VALID = 0x00,
-  INVALID_LOW_RCS = 0x01,
-  INVALID_NEAR_FIELD_ARTEFACT = 0x02,
-  INVALID_FAR_RANGE_CLUSTER = 0x03,
-  VALID_LOW_RCS = 0x04,
-  RESERVED = 0x05,
-  INVALID_HIGH_MIRROR_PROBABILITY = 0x06,
-  INVALID_SENSOR_FIELD_OF_VIEW = 0x07,
-  VALID_AZIMUTH_CORRECTION = 0x08,
-  VALID_HIGH_CHILD_PROBALITY = 0x09,
-  VALID_HIGH_PROBABILITY = 0x0A,
-  VALID_NO_LOCAL_MAX = 0x0B,
-  VALID_HIGH_ARTEFACT_PROBABILITY = 0x0C,
-  RESERVED2 = 0x0D,
-  INVALID_HARMONICS = 0x0E,
-  VALID_ABOVE_95_M = 0x0F,
-  VALID_HIGH_MULTI_TARGET_PROBABILITY = 0x10,
-  VALID_SUSPICIOUS_ANGLE = 0x11,
-} Cluster_InvalidState;
-
 typedef union cluster_0_status {
   struct {
     uint64_t Cluster_NofClustersNear:8;
@@ -138,7 +98,7 @@ class Cluster_1_General
 
   double get_cluster_lat_rel_vel();
 
-  Cluster_DynProp get_cluster_dyn_prop();
+  int get_cluster_dyn_prop();
 
   double get_cluster_rcs();
 
@@ -167,9 +127,9 @@ class Cluster_2_Quality
 
   double get_cluster_lat_rel_vel_rms();
 
-  Cluster_AmbigState get_cluster_ambiguity_state();
+  int get_cluster_ambiguity_state();
 
-  Cluster_InvalidState get_cluster_validity_state();
+  int get_cluster_validity_state();
 
   cluster_2_quality * get_cluster_2_quality();
 
