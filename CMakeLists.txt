@@ -27,6 +27,7 @@ else()
   find_package(rclcpp REQUIRED)
 endif()
 
+find_package(costmap_converter REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(socket_can REQUIRED)
@@ -101,6 +102,11 @@ add_executable(continental_radar_rviz
 )
 target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})
 
+add_executable(obstacle_array
+  src/ros/obstacle_array.cpp
+)
+target_link_libraries(obstacle_array ${catkin_LIBRARIES})
+
 if ($ENV{ROS_VERSION} EQUAL 1)
   add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
   target_link_libraries(continental_radar_ros continental_radar_can ${catkin_LIBRARIES})
@@ -112,6 +118,7 @@ install(
     continental_radar_msg
     continental_radar_ros
     continental_radar_rviz
+    obstacle_array
   ARCHIVE DESTINATION lib/${PROJECT_NAME}
   LIBRARY DESTINATION lib/${PROJECT_NAME}
   RUNTIME DESTINATION lib/${PROJECT_NAME}
