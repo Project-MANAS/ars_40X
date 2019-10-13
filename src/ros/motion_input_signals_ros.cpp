@@ -7,7 +7,7 @@
 namespace continental_radar
 {
 MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can)
+  continental_radar_can_(continental_radar_can), yaw_vel_prev_(0.0)
 {
   speed_information_ = continental_radar_can_->get_speed_information();
   yaw_rate_information_ = continental_radar_can_->get_yaw_rate_information();

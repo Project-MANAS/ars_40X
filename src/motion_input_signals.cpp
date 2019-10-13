@@ -42,7 +42,7 @@ YawRateInformation::~YawRateInformation()
 
 void YawRateInformation::set_yaw_rate(double yaw_rate)
 {
-  int radar_yaw_rate = static_cast<int>(yaw_rate / 0.01);
+  int radar_yaw_rate = static_cast<int>((yaw_rate + 327.68) / 0.01);
   yaw_rate_information_msg.data.RadarDevice_YawRate1 = static_cast<uint64_t>(radar_yaw_rate >> 8);
   yaw_rate_information_msg.data.RadarDevice_YawRate2 = static_cast<uint64_t>(radar_yaw_rate & 255);
 }
