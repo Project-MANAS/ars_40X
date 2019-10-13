@@ -22,7 +22,7 @@ namespace ars_40X
 {
 class RadarCfgROS {
  public:
-  RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
+  RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
 
   ~RadarCfgROS();
 
@@ -67,7 +67,7 @@ class RadarCfgROS {
     RCSThreshold::Response& /*res*/);
 
  private:
-  ARS_40X_CAN * continental_radar_can_;
+  ARS_40X_CAN * ars_40X_can_;
 
   radar_cfg::RadarCfg * radar_cfg_;
 

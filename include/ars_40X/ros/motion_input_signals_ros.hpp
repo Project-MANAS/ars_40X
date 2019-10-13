@@ -17,14 +17,14 @@ namespace ars_40X
 class MotionInputSignalsROS
 {
  public:
-  MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
+  MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
 
   ~MotionInputSignalsROS();
 
  private:
   void odom_callback(nav_msgs::Odometry msg);
 
-  ARS_40X_CAN * continental_radar_can_;
+  ARS_40X_CAN * ars_40X_can_;
 
   motion_input_signals::SpeedInformation * speed_information_;
 

@@ -10,13 +10,13 @@
 
 namespace ars_40X
 {
-ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can)
+ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
+  ars_40X_can_(ars_40X_can)
 {
-  object_0_status_ = continental_radar_can_->get_object_0_status();
-  object_1_general_ = continental_radar_can_->get_object_1_general();
-  object_2_quality_ = continental_radar_can_->get_object_2_quality();
-  object_3_extended_ = continental_radar_can_->get_object_3_extended();
+  object_0_status_ = ars_40X_can_->get_object_0_status();
+  object_1_general_ = ars_40X_can_->get_object_1_general();
+  object_2_quality_ = ars_40X_can_->get_object_2_quality();
+  object_3_extended_ = ars_40X_can_->get_object_3_extended();
   objects_data_pub_ = nh.advertise<ars_40X::ObjectList>("ars_40X/objects", 10);
 }
 

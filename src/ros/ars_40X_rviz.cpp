@@ -163,7 +163,7 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
 }
 
 int main(int argc, char ** argv) {
-  ros::init(argc, argv, "continental_radar_rviz");
-  ars_40X::ContinentalRadarRViz continental_radar_rviz;
+  ros::init(argc, argv, "ars_40X_rviz");
+  ars_40X::ContinentalRadarRViz ars_40X_rviz;
   ros::spin();
 }

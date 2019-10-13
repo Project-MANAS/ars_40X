@@ -8,12 +8,12 @@
 
 namespace ars_40X
 {
-ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can)
+ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
+  ars_40X_can_(ars_40X_can)
 {
-  cluster_0_status_ = continental_radar_can->get_cluster_0_status();
-  cluster_1_general_ = continental_radar_can->get_cluster_1_general();
-  cluster_2_quality_ = continental_radar_can->get_cluster_2_quality();
+  cluster_0_status_ = ars_40X_can->get_cluster_0_status();
+  cluster_1_general_ = ars_40X_can->get_cluster_1_general();
+  cluster_2_quality_ = ars_40X_can->get_cluster_2_quality();
   clusters_data_pub_ = nh.advertise<ars_40X::ClusterList>("ars_40X/clusters", 10);
 }
 

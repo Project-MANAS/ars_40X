@@ -17,7 +17,7 @@ namespace ars_40X
 class ClusterListROS {
  public:
   ClusterListROS(
-    ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
+    ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
 
   ~ClusterListROS();
 
@@ -36,7 +36,7 @@ class ClusterListROS {
 
   cluster_list::Cluster_2_Quality * cluster_2_quality_;
 
-  ARS_40X_CAN * continental_radar_can_;
+  ARS_40X_CAN * ars_40X_can_;
 };
 }
 

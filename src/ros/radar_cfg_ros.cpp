@@ -6,10 +6,10 @@
 
 namespace ars_40X
 {
-RadarCfgROS::RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can)
+RadarCfgROS::RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
+  ars_40X_can_(ars_40X_can)
 {
-  radar_cfg_ = continental_radar_can->get_radar_cfg();
+  radar_cfg_ = ars_40X_can->get_radar_cfg();
   set_max_distance_service_ = nh.advertiseService("set_max_distance", &RadarCfgROS::set_max_distance, this);
   set_sensor_id_service_ = nh.advertiseService("set_sensor_id", &RadarCfgROS::set_sensor_id, this);
   set_radar_power_service_ = nh.advertiseService("set_radar_power", &RadarCfgROS::set_radar_power, this);
@@ -30,7 +30,7 @@ bool RadarCfgROS::set_max_distance(
   MaxDistance::Response& /*res*/)
 {
   radar_cfg_->set_max_distance(static_cast<uint64_t>(req.max_distance));
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_sensor_id(
@@ -38,7 +38,7 @@ bool RadarCfgROS::set_sensor_id(
   SensorID::Response& /*res*/)
 {
   radar_cfg_->set_sensor_id(req.sensor_id);
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_radar_power(
@@ -46,7 +46,7 @@ bool RadarCfgROS::set_radar_power(
   RadarPower::Response& /*res*/)
 {
   radar_cfg_->set_radar_power(req.radar_power);
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_output_type(
@@ -54,7 +54,7 @@ bool RadarCfgROS::set_output_type(
   OutputType::Response& /*res*/)
 {
   radar_cfg_->set_output_type(req.output_type);
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_send_quality(
@@ -62,7 +62,7 @@ bool RadarCfgROS::set_send_quality(
   std_srvs::SetBool::Response& /*res*/)
 {
   radar_cfg_->set_send_quality(static_cast<bool>(req.data));
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_send_ext_info(
@@ -70,7 +70,7 @@ bool RadarCfgROS::set_send_ext_info(
   std_srvs::SetBool::Response& /*res*/)
 {
   radar_cfg_->set_send_ext_info(static_cast<bool>(req.data));
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_sort_index(
@@ -78,7 +78,7 @@ bool RadarCfgROS::set_sort_index(
   SortIndex::Response& /*res*/)
 {
   radar_cfg_->set_sort_index(req.sort_index);
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_ctrl_relay_cfg(
@@ -86,7 +86,7 @@ bool RadarCfgROS::set_ctrl_relay_cfg(
   std_srvs::SetBool::Response& /*res*/)
 {
   radar_cfg_->set_ctrl_relay_cfg(static_cast<bool>(req.data));
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_store_in_nvm(
@@ -94,7 +94,7 @@ bool RadarCfgROS::set_store_in_nvm(
   std_srvs::SetBool::Response& /*res*/)
 {
   radar_cfg_->set_store_in_nvm(static_cast<bool>(req.data));
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 bool RadarCfgROS::set_rcs_threshold(
@@ -102,7 +102,7 @@ bool RadarCfgROS::set_rcs_threshold(
   RCSThreshold::Response& /*res*/)
 {
   radar_cfg_->set_rcs_threshold(req.rcs_threshold);
-  continental_radar_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->send_radar_data(can_messages::RadarCfg);
 }
 
 }

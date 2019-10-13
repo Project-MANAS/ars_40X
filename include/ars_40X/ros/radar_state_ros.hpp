@@ -17,7 +17,7 @@ namespace ars_40X
 {
 class RadarStateROS {
  public:
-  RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
+  RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
 
   ~RadarStateROS();
 
@@ -26,7 +26,7 @@ class RadarStateROS {
  private:
   ros::Publisher radar_state_pub_;
 
-  ARS_40X_CAN * continental_radar_can_;
+  ARS_40X_CAN * ars_40X_can_;
 
   radar_state::RadarState * radar_state_;
 };

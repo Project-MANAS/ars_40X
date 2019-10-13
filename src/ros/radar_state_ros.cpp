@@ -6,10 +6,10 @@
 
 namespace ars_40X
 {
-RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can)
+RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
+  ars_40X_can_(ars_40X_can)
 {
-  radar_state_ = continental_radar_can->get_radar_state();
+  radar_state_ = ars_40X_can->get_radar_state();
   radar_state_pub_ = nh.advertise<RadarStatus>("radar_status", 1);
 }
 

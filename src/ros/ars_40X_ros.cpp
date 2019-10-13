@@ -61,7 +61,7 @@ void ARS_40X_ROS::run() {
 int main(int argc, char **argv) {
   ros::init(argc, argv, "ars_40X");
   ros::NodeHandle nh;
-  ars_40X::ARS_40X_ROS continental_radar_ros_(nh);
-  continental_radar_ros_.run();
+  ars_40X::ARS_40X_ROS ars_40X_ros_(nh);
+  ars_40X_ros_.run();
   ros::spin();
 }

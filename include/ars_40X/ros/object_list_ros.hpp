@@ -32,7 +32,7 @@ class ObjectListROS
  private:
   ros::Publisher objects_data_pub_;
 
-  ARS_40X_CAN * continental_radar_can_;
+  ARS_40X_CAN * ars_40X_can_;
 
   ObjectList object_list;
 

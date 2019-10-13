@@ -6,11 +6,11 @@
 
 namespace ars_40X
 {
-MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
-  continental_radar_can_(continental_radar_can), yaw_vel_prev_(0.0)
+MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
+  ars_40X_can_(ars_40X_can), yaw_vel_prev_(0.0)
 {
-  speed_information_ = continental_radar_can_->get_speed_information();
-  yaw_rate_information_ = continental_radar_can_->get_yaw_rate_information();
+  speed_information_ = ars_40X_can_->get_speed_information();
+  yaw_rate_information_ = ars_40X_can_->get_yaw_rate_information();
   odom_sub_ = nh.subscribe("odom", 10, &MotionInputSignalsROS::odom_callback, this);
 }
 
@@ -28,12 +28,12 @@ void MotionInputSignalsROS::odom_callback(nav_msgs::Odometry msg) {
   } else {
     speed_information_->set_speed_direction(motion_input_signals::STANDSTILL);
   }
-  continental_radar_can_->send_radar_data(can_messages::SpeedInformation);
+  ars_40X_can_->send_radar_data(can_messages::SpeedInformation);
 
   double yaw_rate = msg.twist.twist.angular.z - yaw_vel_prev_;
   yaw_rate /= (msg.header.stamp.toSec() - yaw_vel_time_prev_);
   yaw_rate_information_->set_yaw_rate(yaw_rate);
-  continental_radar_can_->send_radar_data(can_messages::YawRateInformation);
+  ars_40X_can_->send_radar_data(can_messages::YawRateInformation);
   yaw_vel_prev_ = msg.twist.twist.angular.z;
   yaw_vel_time_prev_ = msg.header.stamp.toSec();
 }
