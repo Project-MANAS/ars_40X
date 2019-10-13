@@ -8,11 +8,11 @@
 
 #include "ars_40X/ros/obstacle_array.hpp"
 
-namespace ars_40X
-{
-ObstacleArray::ObstacleArray(){
+namespace ars_40X {
+ObstacleArray::ObstacleArray() {
   ros::NodeHandle nh;
-  object_list_sub_ = nh.subscribe("visualize_objects", 50, &ObstacleArray::object_list_callback, this);
+  object_list_sub_ =
+      nh.subscribe("visualize_objects", 50, &ObstacleArray::object_list_callback, this);
   obstacle_array_pub_ = nh.advertise<costmap_converter::ObstacleArrayMsg>("obstacles", 50);
 }
 
@@ -28,10 +28,10 @@ void ObstacleArray::object_list_callback(ars_40X::ObjectList object_list) {
     geometry_msgs::Point32 pos1, pos2, pos3, pos4;
     tf2::Quaternion q;
     q.setValue(
-      object.position.pose.orientation.x,
-      object.position.pose.orientation.y,
-      object.position.pose.orientation.z,
-      object.position.pose.orientation.w);
+        object.position.pose.orientation.x,
+        object.position.pose.orientation.y,
+        object.position.pose.orientation.z,
+        object.position.pose.orientation.w);
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
@@ -57,7 +57,7 @@ void ObstacleArray::object_list_callback(ars_40X::ObjectList object_list) {
 }
 }
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv) {
   ros::init(argc, argv, "obstacle_array");
   ars_40X::ObstacleArray obstacle_array;
   ros::spin();

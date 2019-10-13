@@ -7,10 +7,8 @@
 
 #include <cstdint>
 
-namespace ars_40X
-{
-namespace object_list
-{
+namespace ars_40X {
+namespace object_list {
 typedef union object_0_status {
   struct {
     uint64_t Object_NofObjects:8;
@@ -81,8 +79,7 @@ typedef union object_3_extended {
   uint8_t raw_data[8];
 } object_3_extended;
 
-class Object_0_Status
-{
+class Object_0_Status {
  public:
   Object_0_Status();
 
@@ -94,14 +91,13 @@ class Object_0_Status
 
   int get_interface_version();
 
-  object_0_status * get_object_0_status();
+  object_0_status *get_object_0_status();
 
  private:
   object_0_status object_0_status_msg;
 };
 
-class Object_1_General
-{
+class Object_1_General {
  public:
   Object_1_General();
 
@@ -121,14 +117,13 @@ class Object_1_General
 
   double get_object_rcs();
 
-  object_1_general * get_object_1_general();
+  object_1_general *get_object_1_general();
 
  private:
   object_1_general object_1_general_msg;
 };
 
-class Object_2_Quality
-{
+class Object_2_Quality {
  public:
   Object_2_Quality();
 
@@ -154,36 +149,35 @@ class Object_2_Quality
 
   int get_object_prob_of_exist();
 
-  object_2_quality * get_object_2_quality();
+  object_2_quality *get_object_2_quality();
 
  private:
   object_2_quality object_2_quality_msg;
 
   double signal_value_table[32] = {
-    0.005, 0.006, 0.008, 0.011,
-    0.014, 0.018, 0.023, 0.029,
-    0.038, 0.049, 0.063, 0.081,
-    0.105, 0.135, 0.174, 0.224,
-    0.288, 0.371, 0.478, 0.616,
-    0.794, 1.023, 1.317, 1.697,
-    2.187, 2.817, 3.630, 4.676,
-    6.025, 7.762, 10.000
+      0.005, 0.006, 0.008, 0.011,
+      0.014, 0.018, 0.023, 0.029,
+      0.038, 0.049, 0.063, 0.081,
+      0.105, 0.135, 0.174, 0.224,
+      0.288, 0.371, 0.478, 0.616,
+      0.794, 1.023, 1.317, 1.697,
+      2.187, 2.817, 3.630, 4.676,
+      6.025, 7.762, 10.000
   };
 
   double orientation_signal_value_table[32] = {
-    0.005,  0.007,   0.010,  0.014,
-    0.020,  0.029,   0.041,  0.058,
-    0.082,  0.116,   0.165,  0.234,
-    0.332,  0.471,   0.669,  0.949,
-    1.346,  1.909,   2.709,  3.843,
-    5.451,  7.734,   10.971, 15.565,
-    22.081, 31.325,  44.439, 63.044,
-    89.437, 126.881, 180.000
+      0.005, 0.007, 0.010, 0.014,
+      0.020, 0.029, 0.041, 0.058,
+      0.082, 0.116, 0.165, 0.234,
+      0.332, 0.471, 0.669, 0.949,
+      1.346, 1.909, 2.709, 3.843,
+      5.451, 7.734, 10.971, 15.565,
+      22.081, 31.325, 44.439, 63.044,
+      89.437, 126.881, 180.000
   };
 };
 
-class Object_3_Extended
-{
+class Object_3_Extended {
  public:
   Object_3_Extended();
 
@@ -203,7 +197,7 @@ class Object_3_Extended
 
   double get_object_width();
 
-  object_3_extended * get_object_3_extended();
+  object_3_extended *get_object_3_extended();
 
  private:
   object_3_extended object_3_extended_msg;

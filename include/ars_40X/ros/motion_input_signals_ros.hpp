@@ -12,23 +12,21 @@
 
 #include "ars_40X/ars_40X_can.hpp"
 
-namespace ars_40X
-{
-class MotionInputSignalsROS
-{
+namespace ars_40X {
+class MotionInputSignalsROS {
  public:
-  MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
+  MotionInputSignalsROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can);
 
   ~MotionInputSignalsROS();
 
  private:
   void odom_callback(nav_msgs::Odometry msg);
 
-  ARS_40X_CAN * ars_40X_can_;
+  ARS_40X_CAN *ars_40X_can_;
 
-  motion_input_signals::SpeedInformation * speed_information_;
+  motion_input_signals::SpeedInformation *speed_information_;
 
-  motion_input_signals::YawRateInformation * yaw_rate_information_;
+  motion_input_signals::YawRateInformation *yaw_rate_information_;
 
   ros::Subscriber odom_sub_;
 

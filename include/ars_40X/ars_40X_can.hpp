@@ -17,8 +17,7 @@
 #include <string>
 #include <iostream>
 
-namespace ars_40X
-{
+namespace ars_40X {
 typedef enum can_messages {
   RadarCfg = 0x200,
   RadarState = 0x201,
@@ -55,27 +54,27 @@ class ARS_40X_CAN {
 
   virtual bool send_radar_data(uint32_t frame_id);
 
-  cluster_list::Cluster_0_Status * get_cluster_0_status();
+  cluster_list::Cluster_0_Status *get_cluster_0_status();
 
-  cluster_list::Cluster_1_General * get_cluster_1_general();
+  cluster_list::Cluster_1_General *get_cluster_1_general();
 
-  cluster_list::Cluster_2_Quality * get_cluster_2_quality();
+  cluster_list::Cluster_2_Quality *get_cluster_2_quality();
 
-  motion_input_signals::SpeedInformation * get_speed_information();
+  motion_input_signals::SpeedInformation *get_speed_information();
 
-  motion_input_signals::YawRateInformation * get_yaw_rate_information();
+  motion_input_signals::YawRateInformation *get_yaw_rate_information();
 
-  object_list::Object_0_Status * get_object_0_status();
+  object_list::Object_0_Status *get_object_0_status();
 
-  object_list::Object_1_General * get_object_1_general();
+  object_list::Object_1_General *get_object_1_general();
 
-  object_list::Object_2_Quality * get_object_2_quality();
+  object_list::Object_2_Quality *get_object_2_quality();
 
-  object_list::Object_3_Extended * get_object_3_extended();
+  object_list::Object_3_Extended *get_object_3_extended();
 
-  radar_state::RadarState * get_radar_state();
+  radar_state::RadarState *get_radar_state();
 
-  radar_cfg::RadarCfg * get_radar_cfg();
+  radar_cfg::RadarCfg *get_radar_cfg();
 
   virtual void send_cluster_0_status() {};
 

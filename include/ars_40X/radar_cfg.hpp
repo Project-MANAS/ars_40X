@@ -8,10 +8,8 @@
 #include <algorithm>
 #include <cstdint>
 
-namespace ars_40X
-{
-namespace radar_cfg
-{
+namespace ars_40X {
+namespace radar_cfg {
 typedef union radar_cfg {
   struct {
     uint64_t RadarCfg_MaxDistance_valid:1;
@@ -70,7 +68,7 @@ class RadarCfg {
 
   bool set_rcs_threshold(int rcs_threshold, bool valid = true);
 
-  radar_cfg * get_radar_cfg();
+  radar_cfg *get_radar_cfg();
 
  private:
   radar_cfg radar_cfg_msg;

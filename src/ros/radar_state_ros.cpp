@@ -4,11 +4,9 @@
 
 #include "ars_40X/ros/radar_state_ros.hpp"
 
-namespace ars_40X
-{
-RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
-  ars_40X_can_(ars_40X_can)
-{
+namespace ars_40X {
+RadarStateROS::RadarStateROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can) :
+    ars_40X_can_(ars_40X_can) {
   radar_state_ = ars_40X_can->get_radar_state();
   radar_state_pub_ = nh.advertise<RadarStatus>("radar_status", 1);
 }

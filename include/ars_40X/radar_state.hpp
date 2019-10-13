@@ -7,10 +7,8 @@
 
 #include <cstdint>
 
-namespace ars_40X
-{
-namespace radar_state
-{
+namespace ars_40X {
+namespace radar_state {
 typedef union radar_state {
   struct {
     uint64_t Reserved:6;
@@ -45,8 +43,7 @@ typedef union radar_state {
   uint8_t raw_data[8];
 } radar_state;
 
-class RadarState
-{
+class RadarState {
  public:
   RadarState();
 
@@ -86,7 +83,7 @@ class RadarState
 
   int get_rcs_threshold();
 
-  radar_state * get_radar_state();
+  radar_state *get_radar_state();
 
  private:
   radar_state radar_state_msg;

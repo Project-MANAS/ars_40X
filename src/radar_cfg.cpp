@@ -4,10 +4,8 @@
 
 #include <ars_40X/radar_cfg.hpp>
 
-namespace ars_40X
-{
-namespace radar_cfg
-{
+namespace ars_40X {
+namespace radar_cfg {
 RadarCfg::RadarCfg() {
   radar_cfg_msg.data.RadarCfg_MaxDistance_valid = 0;
   radar_cfg_msg.data.RadarCfg_SensorID_valid = 0;

@@ -18,58 +18,57 @@
 #include "ars_40X/SensorID.h"
 #include "ars_40X/SortIndex.h"
 
-namespace ars_40X
-{
+namespace ars_40X {
 class RadarCfgROS {
  public:
-  RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
+  RadarCfgROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can);
 
   ~RadarCfgROS();
 
   bool set_max_distance(
-    MaxDistance::Request& req,
-    MaxDistance::Response& /*res*/);
+      MaxDistance::Request &req,
+      MaxDistance::Response & /*res*/);
 
   bool set_sensor_id(
-    SensorID::Request& req,
-    SensorID::Response& /*res*/);
+      SensorID::Request &req,
+      SensorID::Response & /*res*/);
 
   bool set_radar_power(
-    RadarPower::Request& req,
-    RadarPower::Response& /*res*/);
+      RadarPower::Request &req,
+      RadarPower::Response & /*res*/);
 
   bool set_output_type(
-    OutputType::Request& req,
-    OutputType::Response& /*res*/);
+      OutputType::Request &req,
+      OutputType::Response & /*res*/);
 
   bool set_send_quality(
-    std_srvs::SetBool::Request& req,
-    std_srvs::SetBool::Response& /*res*/);
+      std_srvs::SetBool::Request &req,
+      std_srvs::SetBool::Response & /*res*/);
 
   bool set_send_ext_info(
-    std_srvs::SetBool::Request& req,
-    std_srvs::SetBool::Response& /*res*/);
+      std_srvs::SetBool::Request &req,
+      std_srvs::SetBool::Response & /*res*/);
 
   bool set_sort_index(
-    SortIndex::Request& req,
-    SortIndex::Response& /*res*/);
+      SortIndex::Request &req,
+      SortIndex::Response & /*res*/);
 
   bool set_ctrl_relay_cfg(
-    std_srvs::SetBool::Request& req,
-    std_srvs::SetBool::Response& /*res*/);
+      std_srvs::SetBool::Request &req,
+      std_srvs::SetBool::Response & /*res*/);
 
   bool set_store_in_nvm(
-    std_srvs::SetBool::Request& req,
-    std_srvs::SetBool::Response& /*res*/);
+      std_srvs::SetBool::Request &req,
+      std_srvs::SetBool::Response & /*res*/);
 
   bool set_rcs_threshold(
-    RCSThreshold::Request& req,
-    RCSThreshold::Response& /*res*/);
+      RCSThreshold::Request &req,
+      RCSThreshold::Response & /*res*/);
 
  private:
-  ARS_40X_CAN * ars_40X_can_;
+  ARS_40X_CAN *ars_40X_can_;
 
-  radar_cfg::RadarCfg * radar_cfg_;
+  radar_cfg::RadarCfg *radar_cfg_;
 
   ros::ServiceServer set_max_distance_service_;
 

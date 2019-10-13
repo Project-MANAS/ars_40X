@@ -10,16 +10,15 @@
 #include "ars_40X/ObjectList.h"
 #include "ars_40X/ros/ars_40X_rviz.hpp"
 
-namespace ars_40X
-{
-ContinentalRadarRViz::ContinentalRadarRViz(){
+namespace ars_40X {
+ContinentalRadarRViz::ContinentalRadarRViz() {
   ros::NodeHandle nh;
   clusters_pub_ = nh.advertise<visualization_msgs::Marker>("visualize_clusters", 50);
   objects_pub_ = nh.advertise<visualization_msgs::MarkerArray>("visualize_objects", 50);
   clusters_sub_ =
-    nh.subscribe("ars_40X/clusters", 50, &ContinentalRadarRViz::clusters_callback, this);
+      nh.subscribe("ars_40X/clusters", 50, &ContinentalRadarRViz::clusters_callback, this);
   objects_sub_ =
-    nh.subscribe("ars_40X/objects", 50, &ContinentalRadarRViz::objects_callback, this);
+      nh.subscribe("ars_40X/objects", 50, &ContinentalRadarRViz::objects_callback, this);
 }
 
 ContinentalRadarRViz::~ContinentalRadarRViz() {
@@ -58,10 +57,10 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     geometry_msgs::Point pos1, pos2, pos3, pos4;
     tf2::Quaternion q;
     q.setValue(
-      object.position.pose.orientation.x,
-      object.position.pose.orientation.y,
-      object.position.pose.orientation.z,
-      object.position.pose.orientation.w);
+        object.position.pose.orientation.x,
+        object.position.pose.orientation.y,
+        object.position.pose.orientation.z,
+        object.position.pose.orientation.w);
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
@@ -106,53 +105,61 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     marker.scale.y = 0.1;
     marker.scale.z = 0.1;
     switch (object.class_type) {
-      case POINT:
+      case POINT: {
         marker.color.r = 0.0f;
         marker.color.g = 0.0f;
         marker.color.b = 0.0f;
         break;
+      }
 
-      case CAR:
+      case CAR: {
         marker.color.r = 0.0f;
         marker.color.g = 0.0f;
         marker.color.b = 1.0f;
         break;
+      }
 
-      case TRUCK:
+      case TRUCK: {
         marker.color.r = 0.0f;
         marker.color.g = 1.0f;
         marker.color.b = 0.0f;
         break;
+      }
 
-      case PEDESTRIAN:
+      case PEDESTRIAN: {
         marker.color.r = 0.0f;
         marker.color.g = 1.0f;
         marker.color.b = 1.0f;
         break;
+      }
 
-      case MOTORCYCLE:
+      case MOTORCYCLE: {
         marker.color.r = 1.0f;
         marker.color.g = 0.0f;
         marker.color.b = 0.0f;
         break;
+      }
 
-      case BICYCLE:
+      case BICYCLE: {
         marker.color.r = 1.0f;
         marker.color.g = 0.0f;
         marker.color.b = 1.0f;
         break;
+      }
 
-      case WIDE:
+      case WIDE: {
         marker.color.r = 1.0f;
         marker.color.g = 1.0f;
         marker.color.b = 0.0f;
         break;
+      }
 
-      case RESERVED:
+      case RESERVED: {
         marker.color.r = 1.0f;
         marker.color.g = 1.0f;
         marker.color.b = 1.0f;
         break;
+      }
     }
     marker.color.a = 1.0;
     marker.lifetime.fromSec(0.1);
@@ -162,7 +169,7 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
 }
 }
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv) {
   ros::init(argc, argv, "ars_40X_rviz");
   ars_40X::ContinentalRadarRViz ars_40X_rviz;
   ros::spin();

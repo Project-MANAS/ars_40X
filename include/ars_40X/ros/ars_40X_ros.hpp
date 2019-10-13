@@ -8,18 +8,18 @@
 #include <ros/ros.h>
 #include <thread>
 
-#include "cluster_list_ros.hpp"
-#include "motion_input_signals_ros.hpp"
-#include "object_list_ros.hpp"
-#include "radar_cfg_ros.hpp"
-#include "radar_state_ros.hpp"
+#include "ars_40X/ros/cluster_list_ros.hpp"
+#include "ars_40X/ros/motion_input_signals_ros.hpp"
+#include "ars_40X/ros/object_list_ros.hpp"
+#include "ars_40X/ros/radar_cfg_ros.hpp"
+#include "ars_40X/ros/radar_state_ros.hpp"
+
 #include "ars_40X/ars_40X_can.hpp"
 
-namespace ars_40X
-{
+namespace ars_40X {
 class ARS_40X_ROS : public ARS_40X_CAN {
  public:
-  ARS_40X_ROS(ros::NodeHandle& nh);
+  ARS_40X_ROS(ros::NodeHandle &nh);
 
   ~ARS_40X_ROS();
 

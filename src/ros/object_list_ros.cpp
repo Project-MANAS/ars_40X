@@ -8,11 +8,9 @@
 #include <geometry_msgs/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-namespace ars_40X
-{
-ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
-  ars_40X_can_(ars_40X_can)
-{
+namespace ars_40X {
+ObjectListROS::ObjectListROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can) :
+    ars_40X_can_(ars_40X_can) {
   object_0_status_ = ars_40X_can_->get_object_0_status();
   object_1_general_ = ars_40X_can_->get_object_1_general();
   object_2_quality_ = ars_40X_can_->get_object_2_quality();
@@ -20,8 +18,7 @@ ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
   objects_data_pub_ = nh.advertise<ars_40X::ObjectList>("ars_40X/objects", 10);
 }
 
-ObjectListROS::~ObjectListROS()
-{
+ObjectListROS::~ObjectListROS() {
 }
 
 void ObjectListROS::send_object_0_status() {
@@ -44,24 +41,24 @@ void ObjectListROS::send_object_1_general() {
 
 void ObjectListROS::send_object_2_quality() {
   object_list.objects[object_2_quality_id_].position.covariance[0] =
-    pow(object_2_quality_->get_object_lat_dist_rms(), 2);
+      pow(object_2_quality_->get_object_lat_dist_rms(), 2);
   object_list.objects[object_2_quality_id_].position.covariance[7] =
-    pow(object_2_quality_->get_object_long_dist_rms(), 2);
+      pow(object_2_quality_->get_object_long_dist_rms(), 2);
   object_list.objects[object_2_quality_id_].position.covariance[35] =
-    pow(object_2_quality_->get_object_orientation_rms(), 2);
+      pow(object_2_quality_->get_object_orientation_rms(), 2);
   object_list.objects[object_2_quality_id_].relative_velocity.covariance[0] =
-    pow(object_2_quality_->get_object_long_rel_vel_rms(), 2);
+      pow(object_2_quality_->get_object_long_rel_vel_rms(), 2);
   object_list.objects[object_2_quality_id_].relative_velocity.covariance[7] =
-    pow(object_2_quality_->get_object_lat_rel_vel_rms(), 2);
+      pow(object_2_quality_->get_object_lat_rel_vel_rms(), 2);
   object_list.objects[object_2_quality_id_].relative_acceleration.covariance[0] =
-    pow(object_2_quality_->get_object_long_rel_accel_rms(), 2);
+      pow(object_2_quality_->get_object_long_rel_accel_rms(), 2);
   object_list.objects[object_2_quality_id_].relative_acceleration.covariance[7] =
-    pow(object_2_quality_->get_object_lat_rel_accel_rms(), 2);
+      pow(object_2_quality_->get_object_lat_rel_accel_rms(), 2);
   object_list.objects[object_2_quality_id_].meas_state = object_2_quality_->get_object_meas_state();
   ++object_2_quality_id_;
 }
 
-void ObjectListROS::send_object_3_extended(){
+void ObjectListROS::send_object_3_extended() {
   object_list.objects[object_3_extended_id_].length = object_3_extended_->get_object_length();
   object_list.objects[object_3_extended_id_].width = object_3_extended_->get_object_width();
   tf2::Quaternion q;

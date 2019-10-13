@@ -4,18 +4,15 @@
 
 #include <ars_40X/ros/motion_input_signals_ros.hpp>
 
-namespace ars_40X
-{
-MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can) :
-  ars_40X_can_(ars_40X_can), yaw_vel_prev_(0.0)
-{
+namespace ars_40X {
+MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can) :
+    ars_40X_can_(ars_40X_can), yaw_vel_prev_(0.0) {
   speed_information_ = ars_40X_can_->get_speed_information();
   yaw_rate_information_ = ars_40X_can_->get_yaw_rate_information();
   odom_sub_ = nh.subscribe("odom", 10, &MotionInputSignalsROS::odom_callback, this);
 }
 
-MotionInputSignalsROS::~MotionInputSignalsROS()
-{
+MotionInputSignalsROS::~MotionInputSignalsROS() {
 }
 
 void MotionInputSignalsROS::odom_callback(nav_msgs::Odometry msg) {

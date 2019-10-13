@@ -11,8 +11,7 @@
 
 #include <costmap_converter/ObstacleArrayMsg.h>
 
-namespace ars_40X
-{
+namespace ars_40X {
 class ObstacleArray {
  public:
   ObstacleArray();

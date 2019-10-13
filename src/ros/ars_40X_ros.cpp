@@ -5,14 +5,13 @@
 #include "ars_40X/ros/ars_40X_ros.hpp"
 
 namespace ars_40X {
-ARS_40X_ROS::ARS_40X_ROS(ros::NodeHandle& nh) :
-  nh_(nh),
-  cluster_list_ros_(nh_, this),
-  motion_input_signals_ros_(nh_, this),
-  object_list_ros_(nh_, this),
-  radar_cfg_ros_(nh_, this),
-  radar_state_ros_(nh_, this)
-{
+ARS_40X_ROS::ARS_40X_ROS(ros::NodeHandle &nh) :
+    nh_(nh),
+    cluster_list_ros_(nh_, this),
+    motion_input_signals_ros_(nh_, this),
+    object_list_ros_(nh_, this),
+    radar_cfg_ros_(nh_, this),
+    radar_state_ros_(nh_, this) {
 }
 
 ARS_40X_ROS::~ARS_40X_ROS() {
@@ -28,7 +27,7 @@ void ARS_40X_ROS::send_cluster_0_status() {
   cluster_list_ros_.send_cluster_0_status();
 }
 
-void ARS_40X_ROS::send_cluster_1_general(){
+void ARS_40X_ROS::send_cluster_1_general() {
   cluster_list_ros_.send_cluster_1_general();
 }
 

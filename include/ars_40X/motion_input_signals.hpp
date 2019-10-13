@@ -7,10 +7,8 @@
 
 #include <cstdint>
 
-namespace ars_40X
-{
-namespace motion_input_signals
-{
+namespace ars_40X {
+namespace motion_input_signals {
 typedef union speed_information {
   struct {
     uint64_t RadarDevice_Speed1:5;
@@ -37,8 +35,7 @@ typedef union yaw_rate_information {
   uint8_t raw_data[2];
 } yaw_rate_information;
 
-class SpeedInformation
-{
+class SpeedInformation {
  public:
   SpeedInformation();
 
@@ -48,14 +45,13 @@ class SpeedInformation
 
   void set_speed_direction(RadarDevice_SpeedDirection direction);
 
-  speed_information * get_speed_information();
+  speed_information *get_speed_information();
 
  private:
   speed_information speed_information_msg;
 };
 
-class YawRateInformation
-{
+class YawRateInformation {
  public:
   YawRateInformation();
 
@@ -63,7 +59,7 @@ class YawRateInformation
 
   void set_yaw_rate(double yaw_rate);
 
-  yaw_rate_information * get_yaw_rate_information();
+  yaw_rate_information *get_yaw_rate_information();
 
  private:
   speed_information speed_information_msg;

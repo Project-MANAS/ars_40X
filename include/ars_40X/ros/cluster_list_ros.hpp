@@ -12,12 +12,11 @@
 #include "ars_40X/ClusterList.h"
 #include "ars_40X/ars_40X_can.hpp"
 
-namespace ars_40X
-{
+namespace ars_40X {
 class ClusterListROS {
  public:
   ClusterListROS(
-    ros::NodeHandle& nh, ARS_40X_CAN * ars_40X_can);
+      ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can);
 
   ~ClusterListROS();
 
@@ -30,13 +29,13 @@ class ClusterListROS {
 
   ClusterList cluster_list;
 
-  cluster_list::Cluster_0_Status * cluster_0_status_;
+  cluster_list::Cluster_0_Status *cluster_0_status_;
 
-  cluster_list::Cluster_1_General * cluster_1_general_;
+  cluster_list::Cluster_1_General *cluster_1_general_;
 
-  cluster_list::Cluster_2_Quality * cluster_2_quality_;
+  cluster_list::Cluster_2_Quality *cluster_2_quality_;
 
-  ARS_40X_CAN * ars_40X_can_;
+  ARS_40X_CAN *ars_40X_can_;
 };
 }
 

@@ -7,10 +7,8 @@
 
 #include <cstdint>
 
-namespace ars_40X
-{
-namespace cluster_list
-{
+namespace ars_40X {
+namespace cluster_list {
 typedef union cluster_0_status {
   struct {
     uint64_t Cluster_NofClustersNear:8;
@@ -60,8 +58,7 @@ typedef union cluster_2_quality {
   uint8_t raw_data[5];
 } cluster_2_quality;
 
-class Cluster_0_Status
-{
+class Cluster_0_Status {
  public:
   Cluster_0_Status();
 
@@ -75,14 +72,13 @@ class Cluster_0_Status
 
   int get_interface_version();
 
-  cluster_0_status * get_cluster_0_status();
+  cluster_0_status *get_cluster_0_status();
 
  private:
   cluster_0_status cluster_0_status_msg;
 };
 
-class Cluster_1_General
-{
+class Cluster_1_General {
  public:
   Cluster_1_General();
 
@@ -102,14 +98,13 @@ class Cluster_1_General
 
   double get_cluster_rcs();
 
-  cluster_1_general * get_cluster_1_general();
+  cluster_1_general *get_cluster_1_general();
 
  private:
   cluster_1_general cluster_1_general_msg;
 };
 
-class Cluster_2_Quality
-{
+class Cluster_2_Quality {
  public:
   Cluster_2_Quality();
 
@@ -131,7 +126,7 @@ class Cluster_2_Quality
 
   int get_cluster_validity_state();
 
-  cluster_2_quality * get_cluster_2_quality();
+  cluster_2_quality *get_cluster_2_quality();
 
  private:
   cluster_2_quality cluster_2_quality_msg;

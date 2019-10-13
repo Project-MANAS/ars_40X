@@ -7,8 +7,7 @@
 
 #include <ros/ros.h>
 
-namespace ars_40X
-{
+namespace ars_40X {
 enum {
   POINT,
   CAR,
