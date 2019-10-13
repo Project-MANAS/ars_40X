@@ -1,0 +1,19 @@
+<launch>
+  <arg name="visualize" default="true"/>
+  <arg name="obstacle_array" default="false"/>
+
+  <node pkg="ars_40X" type="ars_40X_ros" name="ars_40X_ros" output="screen">
+    <!--<param name="frame_id" value="radar_link"/>-->
+  </node>
+
+  <group if="$(arg visualize)">
+    <node pkg="ars_40X" type="ars_40X_rviz" name="ars_40X_rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ars_40X)/rviz_cfg/ars_40X.rviz"/>
+  </group>
+
+  <group if="$(arg obstacle_array)">
+    <node pkg="ars_40X" type="ars_40X_obstacle_array" name="ars_40X_obstacle_array">
+      <!--<remap from="obstacles" to="/move_base/TebLocalPlannerROS/obstacles"/>-->
+    </node>
+  </group>
+</launch>
