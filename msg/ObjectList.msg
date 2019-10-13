@@ -1,3 +1,3 @@
 std_msgs/Header header
 
-continental_radar/Object[] objects
+ars_40X/Object[] objects

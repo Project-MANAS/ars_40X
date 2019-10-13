@@ -6,26 +6,26 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-#include "continental_radar/ClusterList.h"
-#include "continental_radar/ObjectList.h"
+#include "ars_40X/ClusterList.h"
+#include "ars_40X/ObjectList.h"
 #include "continental_radar/ros/continental_radar_rviz.hpp"
 
-namespace continental_radar
+namespace ars_40X
 {
 ContinentalRadarRViz::ContinentalRadarRViz(){
   ros::NodeHandle nh;
   clusters_pub_ = nh.advertise<visualization_msgs::Marker>("visualize_clusters", 50);
   objects_pub_ = nh.advertise<visualization_msgs::MarkerArray>("visualize_objects", 50);
   clusters_sub_ =
-    nh.subscribe("continental_radar/clusters", 50, &ContinentalRadarRViz::clusters_callback, this);
+    nh.subscribe("ars_40X/clusters", 50, &ContinentalRadarRViz::clusters_callback, this);
   objects_sub_ =
-    nh.subscribe("continental_radar/objects", 50, &ContinentalRadarRViz::objects_callback, this);
+    nh.subscribe("ars_40X/objects", 50, &ContinentalRadarRViz::objects_callback, this);
 }
 
 ContinentalRadarRViz::~ContinentalRadarRViz() {
 }
 
-void ContinentalRadarRViz::clusters_callback(continental_radar::ClusterList cluster_list) {
+void ContinentalRadarRViz::clusters_callback(ars_40X::ClusterList cluster_list) {
   visualization_msgs::Marker marker;
   marker.type = visualization_msgs::Marker::POINTS;
   marker.header.frame_id = "radar";
@@ -45,7 +45,7 @@ void ContinentalRadarRViz::clusters_callback(continental_radar::ClusterList clus
   clusters_pub_.publish(marker);
 }
 
-void ContinentalRadarRViz::objects_callback(continental_radar::ObjectList object_list) {
+void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
   visualization_msgs::MarkerArray marker_array;
   auto time = ros::Time::now();
   for (auto object : object_list.objects) {
@@ -164,6 +164,6 @@ void ContinentalRadarRViz::objects_callback(continental_radar::ObjectList object
 
 int main(int argc, char ** argv) {
   ros::init(argc, argv, "continental_radar_rviz");
-  continental_radar::ContinentalRadarRViz continental_radar_rviz;
+  ars_40X::ContinentalRadarRViz continental_radar_rviz;
   ros::spin();
 }

@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace radar_state
 {

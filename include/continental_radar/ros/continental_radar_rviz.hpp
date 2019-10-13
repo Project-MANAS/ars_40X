@@ -7,7 +7,7 @@
 
 #include <ros/ros.h>
 
-namespace continental_radar
+namespace ars_40X
 {
 enum {
   POINT,
@@ -27,9 +27,9 @@ class ContinentalRadarRViz {
   ~ContinentalRadarRViz();
 
  private:
-  void clusters_callback(continental_radar::ClusterList cluster_list);
+  void clusters_callback(ars_40X::ClusterList cluster_list);
 
-  void objects_callback(continental_radar::ObjectList object_list);
+  void objects_callback(ars_40X::ObjectList object_list);
 
   ros::Publisher clusters_pub_;
 

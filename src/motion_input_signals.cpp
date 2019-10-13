@@ -4,7 +4,7 @@
 
 #include <continental_radar/motion_input_signals.hpp>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace motion_input_signals
 {

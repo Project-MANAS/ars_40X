@@ -11,14 +11,14 @@
 #include <cstdint>
 
 #include "continental_radar/continental_radar_can.hpp"
-#include "continental_radar/MaxDistance.h"
-#include "continental_radar/OutputType.h"
-#include "continental_radar/RadarPower.h"
-#include "continental_radar/RCSThreshold.h"
-#include "continental_radar/SensorID.h"
-#include "continental_radar/SortIndex.h"
+#include "ars_40X/MaxDistance.h"
+#include "ars_40X/OutputType.h"
+#include "ars_40X/RadarPower.h"
+#include "ars_40X/RCSThreshold.h"
+#include "ars_40X/SensorID.h"
+#include "ars_40X/SortIndex.h"
 
-namespace continental_radar
+namespace ars_40X
 {
 class RadarCfgROS {
  public:

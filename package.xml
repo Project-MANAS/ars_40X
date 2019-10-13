@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>continental_radar</name>
+  <name>ars_40X</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>The ars_40X package contains a ROS driver for the Continental radar ARS_404 / ARS_408.</description>
   <maintainer email="shiveshkhaitan@gmail.com">shiveshkhaitan</maintainer>
   <license>TODO: License declaration</license>
 
@@ -15,12 +15,12 @@
   <depend>costmap_converter</depend>
   <depend>geometry_msgs</depend>
   <depend>nav_msgs</depend>
+  <depend condition="$ROS_VERSION == 2">rclcpp</depend>
+  <depend condition="$ROS_VERSION == 1">roscpp</depend>
   <depend>socket_can</depend>
   <depend>std_msgs</depend>
   <depend>std_srvs</depend>
   <depend>visualization_msgs</depend>
-  <depend condition="$ROS_VERSION == 1">roscpp</depend>
-  <depend condition="$ROS_VERSION == 2">rclcpp</depend>
 
   <exec_depend condition="$ROS_VERSION == 1">message_runtime</exec_depend>
 

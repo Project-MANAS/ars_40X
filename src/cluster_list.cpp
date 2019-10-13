@@ -4,7 +4,7 @@
 
 #include "continental_radar/cluster_list.hpp"
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace cluster_list
 {

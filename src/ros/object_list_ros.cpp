@@ -8,7 +8,7 @@
 #include <geometry_msgs/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-namespace continental_radar
+namespace ars_40X
 {
 ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)
@@ -17,7 +17,7 @@ ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continen
   object_1_general_ = continental_radar_can_->get_object_1_general();
   object_2_quality_ = continental_radar_can_->get_object_2_quality();
   object_3_extended_ = continental_radar_can_->get_object_3_extended();
-  objects_data_pub_ = nh.advertise<continental_radar::ObjectList>("continental_radar/objects", 10);
+  objects_data_pub_ = nh.advertise<ars_40X::ObjectList>("ars_40X/objects", 10);
 }
 
 ObjectListROS::~ObjectListROS()

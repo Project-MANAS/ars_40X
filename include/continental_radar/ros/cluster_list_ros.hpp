@@ -9,10 +9,10 @@
 
 #include <cstdint>
 
-#include "continental_radar/ClusterList.h"
+#include "ars_40X/ClusterList.h"
 #include "continental_radar/continental_radar_can.hpp"
 
-namespace continental_radar
+namespace ars_40X
 {
 class ClusterListROS {
  public:

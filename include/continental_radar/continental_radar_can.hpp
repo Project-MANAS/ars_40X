@@ -17,7 +17,7 @@
 #include <string>
 #include <iostream>
 
-namespace continental_radar
+namespace ars_40X
 {
 typedef enum can_messages {
   RadarCfg = 0x200,

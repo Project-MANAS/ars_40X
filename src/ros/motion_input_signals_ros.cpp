@@ -4,7 +4,7 @@
 
 #include <continental_radar/ros/motion_input_signals_ros.hpp>
 
-namespace continental_radar
+namespace ars_40X
 {
 MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can), yaw_vel_prev_(0.0)

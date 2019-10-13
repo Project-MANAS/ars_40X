@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <cstdint>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace radar_cfg
 {

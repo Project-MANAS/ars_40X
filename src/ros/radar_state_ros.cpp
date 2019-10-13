@@ -4,7 +4,7 @@
 
 #include "continental_radar/ros/radar_state_ros.hpp"
 
-namespace continental_radar
+namespace ars_40X
 {
 RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)

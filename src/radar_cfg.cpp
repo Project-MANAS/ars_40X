@@ -4,7 +4,7 @@
 
 #include <continental_radar/radar_cfg.hpp>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace radar_cfg
 {

@@ -11,9 +11,9 @@
 #include <cstdint>
 
 #include "continental_radar/continental_radar_can.hpp"
-#include "continental_radar/RadarStatus.h"
+#include "ars_40X/RadarStatus.h"
 
-namespace continental_radar
+namespace ars_40X
 {
 class RadarStateROS {
  public:

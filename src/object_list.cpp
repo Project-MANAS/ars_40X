@@ -7,7 +7,7 @@
 #include <iostream>
 #include <continental_radar/object_list.hpp>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace object_list
 {

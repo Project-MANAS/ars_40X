@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace continental_radar
+namespace ars_40X
 {
 ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)
@@ -14,7 +14,7 @@ ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ContinentalRadarCAN * contin
   cluster_0_status_ = continental_radar_can->get_cluster_0_status();
   cluster_1_general_ = continental_radar_can->get_cluster_1_general();
   cluster_2_quality_ = continental_radar_can->get_cluster_2_quality();
-  clusters_data_pub_ = nh.advertise<continental_radar::ClusterList>("continental_radar/clusters", 10);
+  clusters_data_pub_ = nh.advertise<ars_40X::ClusterList>("ars_40X/clusters", 10);
 }
 
 ClusterListROS::~ClusterListROS()

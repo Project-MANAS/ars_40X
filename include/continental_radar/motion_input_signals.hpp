@@ -7,7 +7,7 @@
 
 #include <cstdint>
 
-namespace continental_radar
+namespace ars_40X
 {
 namespace motion_input_signals
 {

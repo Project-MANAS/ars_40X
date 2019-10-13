@@ -4,7 +4,7 @@
 
 #include "continental_radar/ros/continental_radar_ros.hpp"
 
-namespace continental_radar {
+namespace ars_40X {
 ContinentalRadarROS::ContinentalRadarROS(ros::NodeHandle& nh) :
   nh_(nh),
   cluster_list_ros_(nh_, this),
@@ -59,9 +59,9 @@ void ContinentalRadarROS::run() {
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "continental_radar");
+  ros::init(argc, argv, "ars_40X");
   ros::NodeHandle nh;
-  continental_radar::ContinentalRadarROS continental_radar_ros_(nh);
+  ars_40X::ContinentalRadarROS continental_radar_ros_(nh);
   continental_radar_ros_.run();
   ros::spin();
 }

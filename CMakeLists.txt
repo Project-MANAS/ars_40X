@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(continental_radar)
+project(ars_40X)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -101,6 +101,7 @@ add_executable(continental_radar_ros
 )
 
 add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(continental_radar_ros ${catkin_LIBRARIES})
 
 add_executable(continental_radar_rviz
     src/ros/continental_radar_rviz.cpp

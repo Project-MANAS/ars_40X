@@ -7,11 +7,11 @@
 
 #include <ros/ros.h>
 
-#include "continental_radar/ObjectList.h"
+#include "ars_40X/ObjectList.h"
 
 #include <costmap_converter/ObstacleArrayMsg.h>
 
-namespace continental_radar
+namespace ars_40X
 {
 class ObstacleArray {
  public:
@@ -20,7 +20,7 @@ class ObstacleArray {
   ~ObstacleArray();
 
  private:
-  void object_list_callback(continental_radar::ObjectList object_list);
+  void object_list_callback(ars_40X::ObjectList object_list);
 
   ros::Publisher obstacle_array_pub_;
 
