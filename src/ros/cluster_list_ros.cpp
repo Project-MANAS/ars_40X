@@ -2,13 +2,13 @@
 // Created by shivesh on 9/17/19.
 //
 
-#include "continental_radar/ros/cluster_list_ros.hpp"
+#include "ars_40X/ros/cluster_list_ros.hpp"
 
 #include <iostream>
 
 namespace ars_40X
 {
-ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
+ClusterListROS::ClusterListROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)
 {
   cluster_0_status_ = continental_radar_can->get_cluster_0_status();

@@ -2,22 +2,22 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_OBJECT_LIST_ROS_HPP
-#define CONTINENTAL_RADAR_OBJECT_LIST_ROS_HPP
+#ifndef ARS_40X_OBJECT_LIST_ROS_HPP
+#define ARS_40X_OBJECT_LIST_ROS_HPP
 
 #include <ros/ros.h>
 
 #include <cstdint>
 
 #include "ars_40X/ObjectList.h"
-#include "continental_radar/continental_radar_can.hpp"
+#include "ars_40X/ars_40X_can.hpp"
 
 namespace ars_40X
 {
 class ObjectListROS
 {
  public:
-  ObjectListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continentalRadarCAN);
+  ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * continentalRadarCAN);
 
   ~ObjectListROS();
 
@@ -32,7 +32,7 @@ class ObjectListROS
  private:
   ros::Publisher objects_data_pub_;
 
-  ContinentalRadarCAN * continental_radar_can_;
+  ARS_40X_CAN * continental_radar_can_;
 
   ObjectList object_list;
 
@@ -50,4 +50,4 @@ class ObjectListROS
 };
 }
 
-#endif //CONTINENTAL_RADAR_OBJECT_LIST_ROS_HPP
+#endif //ARS_40X_OBJECT_LIST_ROS_HPP

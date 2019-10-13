@@ -2,15 +2,15 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_RADAR_CFG_ROS_HPP
-#define CONTINENTAL_RADAR_RADAR_CFG_ROS_HPP
+#ifndef ARS_40X_RADAR_CFG_ROS_HPP
+#define ARS_40X_RADAR_CFG_ROS_HPP
 
 #include <ros/ros.h>
 #include <std_srvs/SetBool.h>
 
 #include <cstdint>
 
-#include "continental_radar/continental_radar_can.hpp"
+#include "ars_40X/ars_40X_can.hpp"
 #include "ars_40X/MaxDistance.h"
 #include "ars_40X/OutputType.h"
 #include "ars_40X/RadarPower.h"
@@ -22,7 +22,7 @@ namespace ars_40X
 {
 class RadarCfgROS {
  public:
-  RadarCfgROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can);
+  RadarCfgROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
 
   ~RadarCfgROS();
 
@@ -67,7 +67,7 @@ class RadarCfgROS {
     RCSThreshold::Response& /*res*/);
 
  private:
-  ContinentalRadarCAN * continental_radar_can_;
+  ARS_40X_CAN * continental_radar_can_;
 
   radar_cfg::RadarCfg * radar_cfg_;
 
@@ -93,4 +93,4 @@ class RadarCfgROS {
 };
 }
 
-#endif //CONTINENTAL_RADAR_RADAR_CFG_ROS_HPP
+#endif //ARS_40X_RADAR_CFG_ROS_HPP

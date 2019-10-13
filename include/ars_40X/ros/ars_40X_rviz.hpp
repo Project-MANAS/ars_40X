@@ -2,8 +2,8 @@
 // Created by shivesh on 9/13/19.
 //
 
-#ifndef CONTINENTAL_RADAR_CONTINENTAL_RADAR_RVIZ_HPP
-#define CONTINENTAL_RADAR_CONTINENTAL_RADAR_RVIZ_HPP
+#ifndef ARS_40X_ARS_40X_RVIZ_HPP
+#define ARS_40X_ARS_40X_RVIZ_HPP
 
 #include <ros/ros.h>
 
@@ -41,4 +41,4 @@ class ContinentalRadarRViz {
 };
 }
 
-#endif //CONTINENTAL_RADAR_CONTINENTAL_RADAR_RVIZ_HPP
+#endif //ARS_40X_ARS_40X_RVIZ_HPP

@@ -2,8 +2,8 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_RADAR_STATE_HPP
-#define CONTINENTAL_RADAR_RADAR_STATE_HPP
+#ifndef ARS_40X_RADAR_STATE_HPP
+#define ARS_40X_RADAR_STATE_HPP
 
 #include <cstdint>
 
@@ -94,4 +94,4 @@ class RadarState
 }
 }
 
-#endif //CONTINENTAL_RADAR_RADAR_STATE_HPP
+#endif //ARS_40X_RADAR_STATE_HPP

@@ -2,16 +2,16 @@
 // Created by shivesh on 9/13/19.
 //
 
-#ifndef CONTINENTAL_RADAR_CONTINENTAL_RADAR_CAN_HPP
-#define CONTINENTAL_RADAR_CONTINENTAL_RADAR_CAN_HPP
+#ifndef ARS_40X_ARS_40X_HPP
+#define ARS_40X_ARS_40X_HPP
 
 #include <socket_can/socket_can.hpp>
 
-#include "continental_radar/cluster_list.hpp"
-#include "continental_radar/motion_input_signals.hpp"
-#include "continental_radar/object_list.hpp"
-#include "continental_radar/radar_cfg.hpp"
-#include "continental_radar/radar_state.hpp"
+#include "ars_40X/cluster_list.hpp"
+#include "ars_40X/motion_input_signals.hpp"
+#include "ars_40X/object_list.hpp"
+#include "ars_40X/radar_cfg.hpp"
+#include "ars_40X/radar_state.hpp"
 
 #include <cstdint>
 #include <string>
@@ -43,13 +43,13 @@ typedef enum can_messages {
   CollDetRelayCtrl = 0x8,
 } can_messages;
 
-class ContinentalRadarCAN {
+class ARS_40X_CAN {
  public:
-  ContinentalRadarCAN();
+  ARS_40X_CAN();
 
-  ContinentalRadarCAN(std::string port);
+  ARS_40X_CAN(std::string port);
 
-  ~ContinentalRadarCAN();
+  ~ARS_40X_CAN();
 
   virtual bool receive_radar_data();
 
@@ -118,4 +118,4 @@ class ContinentalRadarCAN {
 };
 }
 
-#endif //CONTINENTAL_RADAR_CONTINENTAL_RADAR_CAN_HPP
+#endif //ARS_40X_ARS_40X_HPP

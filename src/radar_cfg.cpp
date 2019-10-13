@@ -2,7 +2,7 @@
 // Created by shivesh on 9/14/19.
 //
 
-#include <continental_radar/radar_cfg.hpp>
+#include <ars_40X/radar_cfg.hpp>
 
 namespace ars_40X
 {

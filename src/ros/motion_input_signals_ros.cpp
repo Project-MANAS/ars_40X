@@ -2,11 +2,11 @@
 // Created by shivesh on 9/14/19.
 //
 
-#include <continental_radar/ros/motion_input_signals_ros.hpp>
+#include <ars_40X/ros/motion_input_signals_ros.hpp>
 
 namespace ars_40X
 {
-MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
+MotionInputSignalsROS::MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can), yaw_vel_prev_(0.0)
 {
   speed_information_ = continental_radar_can_->get_speed_information();

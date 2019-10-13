@@ -2,29 +2,29 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_MOTION_INPUT_SIGNALS_ROS_HPP
-#define CONTINENTAL_RADAR_MOTION_INPUT_SIGNALS_ROS_HPP
+#ifndef ARS_40X_MOTION_INPUT_SIGNALS_ROS_HPP
+#define ARS_40X_MOTION_INPUT_SIGNALS_ROS_HPP
 
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
 
 #include <cstdint>
 
-#include "continental_radar/continental_radar_can.hpp"
+#include "ars_40X/ars_40X_can.hpp"
 
 namespace ars_40X
 {
 class MotionInputSignalsROS
 {
  public:
-  MotionInputSignalsROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can);
+  MotionInputSignalsROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
 
   ~MotionInputSignalsROS();
 
  private:
   void odom_callback(nav_msgs::Odometry msg);
 
-  ContinentalRadarCAN * continental_radar_can_;
+  ARS_40X_CAN * continental_radar_can_;
 
   motion_input_signals::SpeedInformation * speed_information_;
 
@@ -38,4 +38,4 @@ class MotionInputSignalsROS
 };
 }
 
-#endif //CONTINENTAL_RADAR_MOTION_INPUT_SIGNALS_ROS_HPP
+#endif //ARS_40X_MOTION_INPUT_SIGNALS_ROS_HPP

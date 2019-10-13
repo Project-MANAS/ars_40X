@@ -2,11 +2,11 @@
 // Created by shivesh on 9/14/19.
 //
 
-#include "continental_radar/ros/radar_state_ros.hpp"
+#include "ars_40X/ros/radar_state_ros.hpp"
 
 namespace ars_40X
 {
-RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
+RadarStateROS::RadarStateROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)
 {
   radar_state_ = continental_radar_can->get_radar_state();

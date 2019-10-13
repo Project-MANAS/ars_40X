@@ -2,7 +2,7 @@
 // Created by shivesh on 9/17/19.
 //
 
-#include "continental_radar/ros/object_list_ros.hpp"
+#include "ars_40X/ros/object_list_ros.hpp"
 
 #include <iostream>
 #include <geometry_msgs/Quaternion.h>
@@ -10,7 +10,7 @@
 
 namespace ars_40X
 {
-ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can) :
+ObjectListROS::ObjectListROS(ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can) :
   continental_radar_can_(continental_radar_can)
 {
   object_0_status_ = continental_radar_can_->get_object_0_status();

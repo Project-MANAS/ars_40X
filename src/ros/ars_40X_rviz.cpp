@@ -8,7 +8,7 @@
 
 #include "ars_40X/ClusterList.h"
 #include "ars_40X/ObjectList.h"
-#include "continental_radar/ros/continental_radar_rviz.hpp"
+#include "ars_40X/ros/ars_40X_rviz.hpp"
 
 namespace ars_40X
 {

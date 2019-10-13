@@ -6,7 +6,7 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-#include "continental_radar/ros/obstacle_array.hpp"
+#include "ars_40X/ros/obstacle_array.hpp"
 
 namespace ars_40X
 {

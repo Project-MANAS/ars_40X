@@ -2,22 +2,22 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_CLUSTER_LIST_ROS_HPP
-#define CONTINENTAL_RADAR_CLUSTER_LIST_ROS_HPP
+#ifndef ARS_40X_CLUSTER_LIST_ROS_HPP
+#define ARS_40X_CLUSTER_LIST_ROS_HPP
 
 #include <ros/ros.h>
 
 #include <cstdint>
 
 #include "ars_40X/ClusterList.h"
-#include "continental_radar/continental_radar_can.hpp"
+#include "ars_40X/ars_40X_can.hpp"
 
 namespace ars_40X
 {
 class ClusterListROS {
  public:
   ClusterListROS(
-    ros::NodeHandle& nh, ContinentalRadarCAN * continental_radar_can);
+    ros::NodeHandle& nh, ARS_40X_CAN * continental_radar_can);
 
   ~ClusterListROS();
 
@@ -36,8 +36,8 @@ class ClusterListROS {
 
   cluster_list::Cluster_2_Quality * cluster_2_quality_;
 
-  ContinentalRadarCAN * continental_radar_can_;
+  ARS_40X_CAN * continental_radar_can_;
 };
 }
 
-#endif //CONTINENTAL_RADAR_CLUSTER_LIST_ROS_HPP
+#endif //ARS_40X_CLUSTER_LIST_ROS_HPP

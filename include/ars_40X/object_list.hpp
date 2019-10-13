@@ -2,8 +2,8 @@
 // Created by shivesh on 9/14/19.
 //
 
-#ifndef CONTINENTAL_RADAR_OBJECT_LIST_HPP
-#define CONTINENTAL_RADAR_OBJECT_LIST_HPP
+#ifndef ARS_40X_OBJECT_LIST_HPP
+#define ARS_40X_OBJECT_LIST_HPP
 
 #include <cstdint>
 
@@ -211,4 +211,4 @@ class Object_3_Extended
 }
 }
 
-#endif //CONTINENTAL_RADAR_OBJECT_LIST_HPP
+#endif //ARS_40X_OBJECT_LIST_HPP

@@ -86,13 +86,13 @@ add_library(continental_radar_msg
 )
 
 add_library(continental_radar_can
-  src/continental_radar_can.cpp
+    src/ars_40X_can.cpp
 )
 
 target_link_libraries(continental_radar_can continental_radar_msg ${socket_can_LIBRARIES})
 
 add_executable(continental_radar_ros
-  src/ros/continental_radar_ros.cpp
+    src/ros/ars_40X_ros.cpp
   src/ros/cluster_list_ros.cpp
   src/ros/motion_input_signals_ros.cpp
   src/ros/object_list_ros.cpp
@@ -104,7 +104,7 @@ add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME
 target_link_libraries(continental_radar_ros ${catkin_LIBRARIES})
 
 add_executable(continental_radar_rviz
-    src/ros/continental_radar_rviz.cpp
+    src/ros/ars_40X_rviz.cpp
 )
 add_dependencies(continental_radar_rviz ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})

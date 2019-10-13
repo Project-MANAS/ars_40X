@@ -2,8 +2,8 @@
 // Created by shivesh on 9/13/19.
 //
 
-#ifndef CONTINENTAL_RADAR_OBSTACLE_ARRAY_HPP
-#define CONTINENTAL_RADAR_OBSTACLE_ARRAY_HPP
+#ifndef ARS_40X_OBSTACLE_ARRAY_HPP
+#define ARS_40X_OBSTACLE_ARRAY_HPP
 
 #include <ros/ros.h>
 
@@ -28,4 +28,4 @@ class ObstacleArray {
 };
 }
 
-#endif //CONTINENTAL_RADAR_OBSTACLE_ARRAY_HPP
+#endif //ARS_40X_OBSTACLE_ARRAY_HPP

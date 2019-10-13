@@ -2,8 +2,8 @@
 // Created by shivesh on 9/13/19.
 //
 
-#ifndef CONTINENTAL_RADAR_CONTINENTAL_RADAR_ROS_HPP
-#define CONTINENTAL_RADAR_CONTINENTAL_RADAR_ROS_HPP
+#ifndef ARS_40X_ARS_40X_ROS_HPP
+#define ARS_40X_ARS_40X_ROS_HPP
 
 #include <ros/ros.h>
 #include <thread>
@@ -13,15 +13,15 @@
 #include "object_list_ros.hpp"
 #include "radar_cfg_ros.hpp"
 #include "radar_state_ros.hpp"
-#include "continental_radar/continental_radar_can.hpp"
+#include "ars_40X/ars_40X_can.hpp"
 
 namespace ars_40X
 {
-class ContinentalRadarROS : public ContinentalRadarCAN {
+class ARS_40X_ROS : public ARS_40X_CAN {
  public:
-  ContinentalRadarROS(ros::NodeHandle& nh);
+  ARS_40X_ROS(ros::NodeHandle& nh);
 
-  ~ContinentalRadarROS();
+  ~ARS_40X_ROS();
 
   void receive_data();
 
@@ -58,4 +58,4 @@ class ContinentalRadarROS : public ContinentalRadarCAN {
 };
 }
 
-#endif //CONTINENTAL_RADAR_CONTINENTAL_RADAR_ROS_HPP
+#endif //ARS_40X_ARS_40X_ROS_HPP
