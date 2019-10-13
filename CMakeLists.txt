@@ -109,11 +109,11 @@ add_executable(ars_40X_rviz
 add_dependencies(ars_40X_rviz ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(ars_40X_rviz ${catkin_LIBRARIES})
 
-add_executable(obstacle_array
-    src/ros/obstacle_array.cpp
+add_executable(ars_40X_obstacle_array
+    src/ros/ars_40X_obstacle_array.cpp
     )
-add_dependencies(obstacle_array ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
-target_link_libraries(obstacle_array ${catkin_LIBRARIES})
+add_dependencies(ars_40X_obstacle_array ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(ars_40X_obstacle_array ${catkin_LIBRARIES})
 
 if ($ENV{ROS_VERSION} EQUAL 1)
   target_link_libraries(ars_40X_ros ars_40X_can ${catkin_LIBRARIES})
@@ -125,7 +125,7 @@ install(
     ars_40X_msg
     ars_40X_ros
     ars_40X_rviz
-    obstacle_array
+    ars_40X_obstacle_array
     ARCHIVE DESTINATION lib/${PROJECT_NAME}
     LIBRARY DESTINATION lib/${PROJECT_NAME}
     RUNTIME DESTINATION lib/${PROJECT_NAME}
