@@ -40,6 +40,10 @@ void ContinentalRadarROS::send_object_1_general() {
   object_list_ros_.send_object_1_general();
 }
 
+void ContinentalRadarROS::send_object_2_quality() {
+  object_list_ros_.send_object_2_quality();
+}
+
 void ContinentalRadarROS::send_object_3_extended() {
   object_list_ros_.send_object_3_extended();
 }

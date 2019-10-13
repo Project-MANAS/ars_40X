@@ -55,6 +55,11 @@ bool ContinentalRadarCAN::receive_radar_data()
       send_object_1_general();
       break;
 
+    case Object_2_Quality:
+      memcpy(object_2_quality_.get_object_2_quality()->raw_data, data, dlc);
+      send_object_2_quality();
+      break;
+
     case Object_3_Extended:
       memcpy(object_3_extended_.get_object_3_extended()->raw_data, data, dlc);
       send_object_3_extended();

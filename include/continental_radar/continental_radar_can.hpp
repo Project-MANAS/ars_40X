@@ -85,6 +85,8 @@ class ContinentalRadarCAN {
 
   virtual void send_object_1_general() {};
 
+  virtual void send_object_2_quality() {};
+
   virtual void send_object_3_extended() {};
 
   virtual void send_radar_state() {};

@@ -41,6 +41,28 @@ typedef union object_1_general {
   uint8_t raw_data[8];
 } object_1_general;
 
+typedef union object_2_quality {
+  struct {
+    uint64_t Obj_ID:8;
+    uint64_t Obj_DistLat_rms1:3;
+    uint64_t Obj_DistLong_rms:5;
+    uint64_t Obj_VrelLat_rms1:1;
+    uint64_t Obj_VrelLong_rms:5;
+    uint64_t Obj_DistLat_rms2:2;
+    uint64_t Obj_ArelLong_rms1:4;
+    uint64_t Obj_VrelLat_rms2:4;
+    uint64_t Obj_Orientation_rms1:2;
+    uint64_t Obj_ArelLat_rms:5;
+    uint64_t Obj_ArelLong_rms2:1;
+    uint64_t Reserved1:5;
+    uint64_t Obj_Orientation_rms2:3;
+    uint64_t Reserved2:2;
+    uint64_t Obj_MeasState:3;
+    uint64_t Obj_ProbOfExist:3;
+  } data = {};
+  uint8_t raw_data[8];
+} object_2_quality;
+
 typedef union object_3_extended {
   struct {
     uint64_t Object_ID:8;
@@ -114,24 +136,50 @@ class Object_2_Quality
 
   int get_object_id();
 
-  int get_object_long_dist_rms();
+  double get_object_long_dist_rms();
 
-  int get_object_long_rel_vel_rms();
+  double get_object_long_rel_vel_rms();
 
-  int get_object_lat_dist_rms();
-
-  int get_object_pdh0();
+  double get_object_lat_dist_rms();
 
   double get_object_lat_rel_vel_rms();
-//
-//  Object_AmbigState get_object_ambiguity_state();
-//
-//  Object_InvalidState get_object_validity_state();
-//
-//  object_2_quality * get_object_2_quality();
-//
-// private:
-//  object_2_quality object_2_quality_msg;
+
+  double get_object_long_rel_accel_rms();
+
+  double get_object_lat_rel_accel_rms();
+
+  double get_object_orientation_rms();
+
+  int get_object_meas_state();
+
+  int get_object_prob_of_exist();
+
+  object_2_quality * get_object_2_quality();
+
+ private:
+  object_2_quality object_2_quality_msg;
+
+  double signal_value_table[32] = {
+    0.005, 0.006, 0.008, 0.011,
+    0.014, 0.018, 0.023, 0.029,
+    0.038, 0.049, 0.063, 0.081,
+    0.105, 0.135, 0.174, 0.224,
+    0.288, 0.371, 0.478, 0.616,
+    0.794, 1.023, 1.317, 1.697,
+    2.187, 2.817, 3.630, 4.676,
+    6.025, 7.762, 10.000
+  };
+
+  double orientation_signal_value_table[32] = {
+    0.005,  0.007,   0.010,  0.014,
+    0.020,  0.029,   0.041,  0.058,
+    0.082,  0.116,   0.165,  0.234,
+    0.332,  0.471,   0.669,  0.949,
+    1.346,  1.909,   2.709,  3.843,
+    5.451,  7.734,   10.971, 15.565,
+    22.081, 31.325,  44.439, 63.044,
+    89.437, 126.881, 180.000
+  };
 };
 
 class Object_3_Extended

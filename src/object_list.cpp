@@ -100,6 +100,61 @@ Object_2_Quality::~Object_2_Quality()
 {
 }
 
+int Object_2_Quality::get_object_id()
+{
+  return static_cast<int>(object_2_quality_msg.data.Obj_ID);
+}
+
+double Object_2_Quality::get_object_lat_dist_rms()
+{
+  return signal_value_table[static_cast<int>(object_2_quality_msg.data.Obj_DistLat_rms1 << 2 |
+    object_2_quality_msg.data.Obj_DistLat_rms2)];
+}
+
+double Object_2_Quality::get_object_long_dist_rms()
+{
+  return signal_value_table[static_cast<int>(object_2_quality_msg.data.Obj_DistLong_rms)];
+}
+
+double Object_2_Quality::get_object_lat_rel_vel_rms()
+{
+  return signal_value_table[static_cast<int>(
+      object_2_quality_msg.data.Obj_VrelLat_rms1 << 4 | object_2_quality_msg.data.Obj_VrelLat_rms2)];
+}
+
+double Object_2_Quality::get_object_long_rel_vel_rms()
+{
+  return signal_value_table[static_cast<int>(object_2_quality_msg.data.Obj_VrelLong_rms)];
+}
+
+double Object_2_Quality::get_object_long_rel_accel_rms()
+{
+  return signal_value_table[static_cast<int>(object_2_quality_msg.data.Obj_ArelLong_rms1 << 1 |
+    object_2_quality_msg.data.Obj_ArelLong_rms2)];
+}
+
+double Object_2_Quality::get_object_lat_rel_accel_rms()
+{
+  return signal_value_table[static_cast<int>(object_2_quality_msg.data.Obj_ArelLat_rms)];
+}
+
+int Object_2_Quality::get_object_meas_state()
+{
+  return static_cast<int>(object_2_quality_msg.data.Obj_MeasState);
+}
+
+double Object_2_Quality::get_object_orientation_rms()
+{
+  return orientation_signal_value_table[
+    static_cast<int>(object_2_quality_msg.data.Obj_Orientation_rms1 << 3 |
+      object_2_quality_msg.data.Obj_Orientation_rms2)];
+}
+
+object_2_quality * Object_2_Quality::get_object_2_quality()
+{
+  return & object_2_quality_msg;
+}
+
 Object_3_Extended::Object_3_Extended()
 {
 }

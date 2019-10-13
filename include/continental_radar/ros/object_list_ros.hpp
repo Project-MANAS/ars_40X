@@ -25,6 +25,8 @@ class ObjectListROS
 
   void send_object_1_general();
 
+  void send_object_2_quality();
+
   void send_object_3_extended();
 
  private:
@@ -42,7 +44,9 @@ class ObjectListROS
 
   object_list::Object_3_Extended * object_3_extended_;
 
-  int object_id_;
+  int object_2_quality_id_;
+
+  int object_3_extended_id_;
 };
 }
 

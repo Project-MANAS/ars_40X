@@ -1,11 +1,8 @@
 uint8 id
 
-geometry_msgs/Point position
-geometry_msgs/Point position_covariance
-geometry_msgs/Point relative_velocity
-geometry_msgs/Point relative_velocity_covariance
-geometry_msgs/Point relative_acceleration
-geometry_msgs/Point relative_acceleration_covariance
+geometry_msgs/PoseWithCovariance position
+geometry_msgs/TwistWithCovariance relative_velocity
+geometry_msgs/AccelWithCovariance relative_acceleration
 
 float32 length
 float32 width
@@ -13,3 +10,4 @@ float32 orientation_angle
 
 int8 dynamic_property
 int8 class_type
+int8 meas_state
