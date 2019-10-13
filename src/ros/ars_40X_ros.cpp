@@ -10,8 +10,8 @@ ARS_40X_ROS::ARS_40X_ROS(ros::NodeHandle& nh) :
   cluster_list_ros_(nh_, this),
   motion_input_signals_ros_(nh_, this),
   object_list_ros_(nh_, this),
-  radar_state_ros_(nh_, this),
-  radar_cfg_ros_(nh_, this)
+  radar_cfg_ros_(nh_, this),
+  radar_state_ros_(nh_, this)
 {
 }
 

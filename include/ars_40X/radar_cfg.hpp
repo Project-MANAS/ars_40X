@@ -50,25 +50,25 @@ class RadarCfg {
 
   ~RadarCfg();
 
-  void set_max_distance(uint64_t distance, bool valid = true);
+  bool set_max_distance(uint64_t distance, bool valid = true);
 
-  void set_sensor_id(uint64_t id, bool valid = true);
+  bool set_sensor_id(int id, bool valid = true);
 
-  void set_radar_power(int power, bool valid = true);
+  bool set_radar_power(int power, bool valid = true);
 
-  void set_output_type(int output_type, bool valid = true);
+  bool set_output_type(int output_type, bool valid = true);
 
   void set_send_quality(bool quality, bool valid = true);
 
   void set_send_ext_info(bool send_ext, bool valid = true);
 
-  void set_sort_index(int sort_index, bool valid = true);
+  bool set_sort_index(int sort_index, bool valid = true);
 
   void set_ctrl_relay_cfg(bool ctrl_relay, bool valid = true);
 
   void set_store_in_nvm(bool store_in_nvm, bool valid = true);
 
-  void set_rcs_threshold(int rcs_threshold, bool valid = true);
+  bool set_rcs_threshold(int rcs_threshold, bool valid = true);
 
   radar_cfg * get_radar_cfg();
 
