@@ -6,13 +6,13 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-#include "ars_40X/ros/obstacle_array.hpp"
+#include "ars_40X/ros/ars_40X_obstacle_array.hpp"
 
 namespace ars_40X {
 ObstacleArray::ObstacleArray() {
   ros::NodeHandle nh;
   object_list_sub_ =
-      nh.subscribe("visualize_objects", 50, &ObstacleArray::object_list_callback, this);
+      nh.subscribe("ars_40X/objects", 50, &ObstacleArray::object_list_callback, this);
   obstacle_array_pub_ = nh.advertise<costmap_converter::ObstacleArrayMsg>("obstacles", 50);
 }
 
@@ -21,7 +21,7 @@ ObstacleArray::~ObstacleArray() {
 
 void ObstacleArray::object_list_callback(ars_40X::ObjectList object_list) {
   costmap_converter::ObstacleArrayMsg obstacle_array_msg;
-  obstacle_array_msg.header.frame_id = "radar";
+  obstacle_array_msg.header.frame_id = object_list.header.frame_id;
   obstacle_array_msg.header.stamp = ros::Time::now();
   for (auto object : object_list.objects) {
     costmap_converter::ObstacleMsg obstacle;

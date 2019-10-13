@@ -27,7 +27,7 @@ ContinentalRadarRViz::~ContinentalRadarRViz() {
 void ContinentalRadarRViz::clusters_callback(ars_40X::ClusterList cluster_list) {
   visualization_msgs::Marker marker;
   marker.type = visualization_msgs::Marker::POINTS;
-  marker.header.frame_id = "radar";
+  marker.header.frame_id = cluster_list.header.frame_id;
   marker.action = visualization_msgs::Marker::ADD;
   marker.header.stamp = ros::Time::now();
   for (auto cluster : cluster_list.clusters) {
@@ -50,7 +50,7 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
   for (auto object : object_list.objects) {
     visualization_msgs::Marker marker;
     marker.type = visualization_msgs::Marker::LINE_STRIP;
-    marker.header.frame_id = "radar";
+    marker.header.frame_id = object_list.header.frame_id;
     marker.action = visualization_msgs::Marker::ADD;
     marker.header.stamp = time;
     marker.id = object.id;

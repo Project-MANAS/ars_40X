@@ -18,8 +18,13 @@ ClusterListROS::ClusterListROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can) :
 ClusterListROS::~ClusterListROS() {
 }
 
+void ClusterListROS::set_frame_id(std::string frame_id) {
+  frame_id_ = frame_id;
+}
+
 void ClusterListROS::send_cluster_0_status() {
   cluster_list.header.stamp = ros::Time::now();
+  cluster_list.header.frame_id = frame_id_;
   clusters_data_pub_.publish(cluster_list);
   cluster_list.clusters.clear();
 }

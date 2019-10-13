@@ -12,6 +12,11 @@ ARS_40X_ROS::ARS_40X_ROS(ros::NodeHandle &nh) :
     object_list_ros_(nh_, this),
     radar_cfg_ros_(nh_, this),
     radar_state_ros_(nh_, this) {
+  ros::NodeHandle private_nh("~");
+  std::string frame_id;
+  private_nh.param<std::string>("frame_id", frame_id, std::string("radar"));
+  cluster_list_ros_.set_frame_id(frame_id);
+  object_list_ros_.set_frame_id(frame_id);
 }
 
 ARS_40X_ROS::~ARS_40X_ROS() {
@@ -58,7 +63,7 @@ void ARS_40X_ROS::run() {
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "ars_40X");
+  ros::init(argc, argv, "ars_40X_ros");
   ros::NodeHandle nh;
   ars_40X::ARS_40X_ROS ars_40X_ros_(nh);
   ars_40X_ros_.run();

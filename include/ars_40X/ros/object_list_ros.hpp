@@ -19,6 +19,8 @@ class ObjectListROS {
 
   ~ObjectListROS();
 
+  void set_frame_id(std::string frame_id);
+
   void send_object_0_status();
 
   void send_object_1_general();
@@ -28,6 +30,8 @@ class ObjectListROS {
   void send_object_3_extended();
 
  private:
+  std::string frame_id_;
+
   ros::Publisher objects_data_pub_;
 
   ARS_40X_CAN *ars_40X_can_;

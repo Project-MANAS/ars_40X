@@ -21,8 +21,13 @@ ObjectListROS::ObjectListROS(ros::NodeHandle &nh, ARS_40X_CAN *ars_40X_can) :
 ObjectListROS::~ObjectListROS() {
 }
 
+void ObjectListROS::set_frame_id(std::string frame_id) {
+  frame_id_ = frame_id;
+}
+
 void ObjectListROS::send_object_0_status() {
   object_list.header.stamp = ros::Time::now();
+  object_list.header.frame_id = frame_id_;
   objects_data_pub_.publish(object_list);
   object_list.objects.clear();
   object_2_quality_id_ = 0;

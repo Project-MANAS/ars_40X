@@ -20,11 +20,15 @@ class ClusterListROS {
 
   ~ClusterListROS();
 
+  void set_frame_id(std::string frame_id);
+
   void send_cluster_0_status();
 
   void send_cluster_1_general();
 
  private:
+  std::string frame_id_;
+
   ros::Publisher clusters_data_pub_;
 
   ClusterList cluster_list;
