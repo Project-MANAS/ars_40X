@@ -77,7 +77,7 @@ endif()
 include_directories(include)
 include_directories(${socket_can_INCLUDE_DIRS})
 
-add_library(continental_radar_msg
+add_library(ars_40X_msg
   src/cluster_list.cpp
   src/motion_input_signals.cpp
   src/object_list.cpp
@@ -85,14 +85,14 @@ add_library(continental_radar_msg
   src/radar_state.cpp
 )
 
-add_library(continental_radar_can
+add_library(ars_40X_can
     src/ars_40X_can.cpp
 )
 
-target_link_libraries(continental_radar_can continental_radar_msg ${socket_can_LIBRARIES})
+target_link_libraries(ars_40X_can ars_40X_msg ${socket_can_LIBRARIES})
 
-add_executable(continental_radar_ros
-    src/ros/ars_40X_ros.cpp
+add_executable(ars_40X_ros
+  src/ros/ars_40X_ros.cpp
   src/ros/cluster_list_ros.cpp
   src/ros/motion_input_signals_ros.cpp
   src/ros/object_list_ros.cpp
@@ -100,14 +100,14 @@ add_executable(continental_radar_ros
   src/ros/radar_state_ros.cpp
 )
 
-add_dependencies(continental_radar_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
-target_link_libraries(continental_radar_ros ${catkin_LIBRARIES})
+add_dependencies(ars_40X_ros ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(ars_40X_ros ${catkin_LIBRARIES})
 
-add_executable(continental_radar_rviz
-    src/ros/ars_40X_rviz.cpp
+add_executable(ars_40X_rviz
+  src/ros/ars_40X_rviz.cpp
 )
-add_dependencies(continental_radar_rviz ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
-target_link_libraries(continental_radar_rviz ${catkin_LIBRARIES})
+add_dependencies(ars_40X_rviz ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(ars_40X_rviz ${catkin_LIBRARIES})
 
 add_executable(obstacle_array
   src/ros/obstacle_array.cpp
@@ -116,15 +116,15 @@ add_dependencies(obstacle_array ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gener
 target_link_libraries(obstacle_array ${catkin_LIBRARIES})
 
 if ($ENV{ROS_VERSION} EQUAL 1)
-  target_link_libraries(continental_radar_ros continental_radar_can ${catkin_LIBRARIES})
+  target_link_libraries(ars_40X_ros ars_40X_can ${catkin_LIBRARIES})
 endif()
 
 install(
   TARGETS
-    continental_radar_can
-    continental_radar_msg
-    continental_radar_ros
-    continental_radar_rviz
+    ars_40X_can
+    ars_40X_msg
+    ars_40X_ros
+    ars_40X_rviz
     obstacle_array
   ARCHIVE DESTINATION lib/${PROJECT_NAME}
   LIBRARY DESTINATION lib/${PROJECT_NAME}
