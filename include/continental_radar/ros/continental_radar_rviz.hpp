@@ -9,6 +9,17 @@
 
 namespace continental_radar
 {
+enum {
+  POINT,
+  CAR,
+  TRUCK,
+  PEDESTRIAN,
+  MOTORCYCLE,
+  BICYCLE,
+  WIDE,
+  RESERVED
+};
+
 class ContinentalRadarRViz {
  public:
   ContinentalRadarRViz();

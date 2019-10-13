@@ -4,6 +4,7 @@
 
 #include <ros/ros.h>
 #include <visualization_msgs/MarkerArray.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include "continental_radar/ClusterList.h"
 #include "continental_radar/ObjectList.h"
@@ -47,79 +48,114 @@ void ContinentalRadarRViz::clusters_callback(continental_radar::ClusterList clus
 void ContinentalRadarRViz::objects_callback(continental_radar::ObjectList object_list) {
   visualization_msgs::MarkerArray marker_array;
   auto time = ros::Time::now();
-  int id = 0;
   for (auto object : object_list.objects) {
     visualization_msgs::Marker marker;
     marker.type = visualization_msgs::Marker::LINE_STRIP;
     marker.header.frame_id = "radar";
     marker.action = visualization_msgs::Marker::ADD;
     marker.header.stamp = time;
-    marker.id = id++;
+    marker.id = object.id;
     geometry_msgs::Point pos1, pos2, pos3, pos4;
-    pos1.x = object.position.x + (object.width / 2) * tan((object.orientation_angle * M_PI) / 180);
-    pos1.y = object.position.y + object.width / 2;
+    tf2::Quaternion q;
+    q.setValue(
+      object.position.pose.orientation.x,
+      object.position.pose.orientation.y,
+      object.position.pose.orientation.z,
+      object.position.pose.orientation.w);
+    tf2::Matrix3x3 m(q);
+    double roll, pitch, yaw;
+    m.getRPY(roll, pitch, yaw);
+    pos1.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180.0);
+    pos1.y = object.position.pose.position.y + object.width / 2;
     pos1.z = object.length / 2;
-    pos2.x = object.position.x - (object.width / 2) * tan((object.orientation_angle * M_PI) / 180);
-    pos2.y = object.position.y - object.width / 2;
+    pos2.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180.0);
+    pos2.y = object.position.pose.position.y - object.width / 2;
     pos2.z = object.length / 2;
-    pos3.x = object.position.x - (object.width / 2) * tan((object.orientation_angle * M_PI) / 180);
-    pos3.y = object.position.y - object.width / 2;
+    pos3.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180.0);
+    pos3.y = object.position.pose.position.y - object.width / 2;
     pos3.z = -object.length / 2;
-    pos4.x = object.position.x + (object.width / 2) * tan((object.orientation_angle * M_PI) / 180);
-    pos4.y = object.position.y + object.width / 2;
+    pos4.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180.0);
+    pos4.y = object.position.pose.position.y + object.width / 2;
     pos4.z = -object.length / 2;
-    marker.points.push_back(pos1);
-    marker.points.push_back(pos2);
-    marker.points.push_back(pos3);
-    marker.points.push_back(pos4);
-    marker.points.push_back(pos1);
+    if (yaw != 0) {
+      double max = pos1.x;
+      marker.points.push_back(pos1);
+      if (pos2.x >= max) {
+        marker.points.push_back(pos2);
+        max = std::max(pos2.x, max);
+      }
+      if (pos3.x >= max) {
+        marker.points.push_back(pos3);
+        max = std::max(pos3.x, max);
+      }
+      if (pos4.x >= max) {
+        marker.points.push_back(pos4);
+        max = std::max(pos4.x, max);
+      }
+      if (pos1.x >= max) {
+        marker.points.push_back(pos1);
+      }
+    } else {
+      marker.points.push_back(pos1);
+      marker.points.push_back(pos2);
+      marker.points.push_back(pos3);
+      marker.points.push_back(pos4);
+      marker.points.push_back(pos1);
+    }
     marker.scale.x = 0.1;
     marker.scale.y = 0.1;
     marker.scale.z = 0.1;
     switch (object.class_type) {
-      case 1:
+      case POINT:
         marker.color.r = 0.0f;
         marker.color.g = 0.0f;
         marker.color.b = 0.0f;
         break;
-      case 2:
+
+      case CAR:
         marker.color.r = 0.0f;
         marker.color.g = 0.0f;
         marker.color.b = 1.0f;
         break;
-      case 3:
+
+      case TRUCK:
         marker.color.r = 0.0f;
         marker.color.g = 1.0f;
         marker.color.b = 0.0f;
         break;
-      case 4:
+
+      case PEDESTRIAN:
         marker.color.r = 0.0f;
         marker.color.g = 1.0f;
         marker.color.b = 1.0f;
         break;
-      case 5:
+
+      case MOTORCYCLE:
         marker.color.r = 1.0f;
         marker.color.g = 0.0f;
         marker.color.b = 0.0f;
         break;
-      case 6:
+
+      case BICYCLE:
         marker.color.r = 1.0f;
         marker.color.g = 0.0f;
         marker.color.b = 1.0f;
         break;
-      case 7:
+
+      case WIDE:
         marker.color.r = 1.0f;
         marker.color.g = 1.0f;
         marker.color.b = 0.0f;
         break;
-      case 8:
+
+      case RESERVED:
         marker.color.r = 1.0f;
         marker.color.g = 1.0f;
         marker.color.b = 1.0f;
         break;
     }
     marker.color.a = 1.0;
-    marker.lifetime.nsec = 200000000;
+    marker.lifetime.fromSec(0.1);
     marker_array.markers.push_back(marker);
   }
   objects_pub_.publish(marker_array);
