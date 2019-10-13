@@ -63,9 +63,6 @@ if ($ENV{ROS_VERSION} EQUAL 1)
       LIBRARIES
       ${PROJECT_NAME}_can
       ${PROJECT_NAME}_msg
-      ${PROJECT_NAME}_ros
-      ${PROJECT_NAME}_rviz
-      object_array
       CATKIN_DEPENDS
       message_runtime
       roscpp
