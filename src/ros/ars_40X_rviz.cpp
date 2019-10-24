@@ -64,46 +64,26 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
-    pos1.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180.0);
-    pos1.y = object.position.pose.position.y + object.width / 2;
-    pos1.z = object.length / 2;
-    pos2.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180.0);
-    pos2.y = object.position.pose.position.y - object.width / 2;
-    pos2.z = object.length / 2;
-    pos3.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180.0);
-    pos3.y = object.position.pose.position.y - object.width / 2;
-    pos3.z = -object.length / 2;
-    pos4.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180.0);
-    pos4.y = object.position.pose.position.y + object.width / 2;
-    pos4.z = -object.length / 2;
-    if (yaw != 0) {
-      double max = pos1.x;
-      marker.points.push_back(pos1);
-      if (pos2.x >= max) {
-        marker.points.push_back(pos2);
-        max = std::max(pos2.x, max);
-      }
-      if (pos3.x >= max) {
-        marker.points.push_back(pos3);
-        max = std::max(pos3.x, max);
-      }
-      if (pos4.x >= max) {
-        marker.points.push_back(pos4);
-        max = std::max(pos4.x, max);
-      }
-      if (pos1.x >= max) {
-        marker.points.push_back(pos1);
-      }
-    } else {
-      marker.points.push_back(pos1);
-      marker.points.push_back(pos2);
-      marker.points.push_back(pos3);
-      marker.points.push_back(pos4);
-      marker.points.push_back(pos1);
+    if (isnan(yaw)) {
+      continue;
     }
+    pos1.x = object.position.pose.position.x - (object.width / 2) * sin((yaw * M_PI) / 180.0);
+    pos1.y = object.position.pose.position.y + (object.width / 2) * cos((yaw * M_PI) / 180.0);
+    pos2.x = object.position.pose.position.x + (object.width / 2) * sin((yaw * M_PI) / 180.0);
+    pos2.y = object.position.pose.position.y - (object.width / 2) * cos((yaw * M_PI) / 180.0);
+    pos3.x = pos2.x + (object.length) * cos((yaw * M_PI) / 180.0);
+    pos3.y = pos2.y + (object.length) * sin((yaw * M_PI) / 180.0);
+    pos4.x = pos1.x + (object.length) * cos((yaw * M_PI) / 180.0);
+    pos4.y = pos1.y + (object.length) * sin((yaw * M_PI) / 180.0);
+    marker.points.push_back(pos1);
+    marker.points.push_back(pos2);
+    marker.points.push_back(pos3);
+    marker.points.push_back(pos4);
+    marker.points.push_back(pos1);
     marker.scale.x = 0.1;
     marker.scale.y = 0.1;
     marker.scale.z = 0.1;
+
     switch (object.class_type) {
       case POINT: {
         marker.color.r = 0.0f;

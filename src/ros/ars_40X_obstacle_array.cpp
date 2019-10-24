@@ -35,22 +35,23 @@ void ObstacleArray::object_list_callback(ars_40X::ObjectList object_list) {
     tf2::Matrix3x3 m(q);
     double roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
-    pos1.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180);
-    pos1.y = object.position.pose.position.y + object.width / 2;
-    pos1.z = object.length / 2;
-    pos2.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180);
-    pos2.y = object.position.pose.position.y - object.width / 2;
-    pos2.z = object.length / 2;
-    pos3.x = object.position.pose.position.x - (object.width / 2) * tan((yaw * M_PI) / 180);
-    pos3.y = object.position.pose.position.y - object.width / 2;
-    pos3.z = -object.length / 2;
-    pos4.x = object.position.pose.position.x + (object.width / 2) * tan((yaw * M_PI) / 180);
-    pos4.y = object.position.pose.position.y + object.width / 2;
-    pos4.z = -object.length / 2;
+    if (isnan(yaw)) {
+      continue;
+    }
+    tf2::convert(obstacle.orientation, q);
+    pos1.x = object.position.pose.position.x - (object.width / 2) * sin((yaw * M_PI) / 180.0);
+    pos1.y = object.position.pose.position.y + (object.width / 2) * cos((yaw * M_PI) / 180.0);
+    pos2.x = object.position.pose.position.x + (object.width / 2) * sin((yaw * M_PI) / 180.0);
+    pos2.y = object.position.pose.position.y - (object.width / 2) * cos((yaw * M_PI) / 180.0);
+    pos3.x = pos2.x + (object.length) * cos((yaw * M_PI) / 180.0);
+    pos3.y = pos2.y + (object.length) * sin((yaw * M_PI) / 180.0);
+    pos4.x = pos1.x + (object.length) * cos((yaw * M_PI) / 180.0);
+    pos4.y = pos1.y + (object.length) * sin((yaw * M_PI) / 180.0);
     obstacle.polygon.points.push_back(pos1);
     obstacle.polygon.points.push_back(pos2);
     obstacle.polygon.points.push_back(pos3);
     obstacle.polygon.points.push_back(pos4);
+    obstacle.velocities.twist = object.relative_velocity.twist;
     obstacle_array_msg.obstacles.push_back(obstacle);
   }
   obstacle_array_pub_.publish(obstacle_array_msg);

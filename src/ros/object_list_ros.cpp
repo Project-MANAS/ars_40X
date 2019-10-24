@@ -28,6 +28,9 @@ void ObjectListROS::set_frame_id(std::string frame_id) {
 void ObjectListROS::send_object_0_status() {
   object_list.header.stamp = ros::Time::now();
   object_list.header.frame_id = frame_id_;
+  object_list.objects.erase(
+      object_list.objects.begin() + std::min(object_2_quality_id_, object_3_extended_id_),
+      object_list.objects.begin() + object_list.objects.size());
   objects_data_pub_.publish(object_list);
   object_list.objects.clear();
   object_2_quality_id_ = 0;
@@ -67,7 +70,7 @@ void ObjectListROS::send_object_3_extended() {
   object_list.objects[object_3_extended_id_].length = object_3_extended_->get_object_length();
   object_list.objects[object_3_extended_id_].width = object_3_extended_->get_object_width();
   tf2::Quaternion q;
-  q.setRPY(0, 0, object_3_extended_->get_object_orientation_angle());
+  q.setRPY(0, 0, object_3_extended_->get_object_orientation_angle() * M_PI / 180.0);
   object_list.objects[object_3_extended_id_].position.pose.orientation.w = q.getW();
   object_list.objects[object_3_extended_id_].position.pose.orientation.x = q.getX();
   object_list.objects[object_3_extended_id_].position.pose.orientation.y = q.getY();
