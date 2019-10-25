@@ -29,10 +29,6 @@ class MotionInputSignalsROS {
   motion_input_signals::YawRateInformation *yaw_rate_information_;
 
   ros::Subscriber odom_sub_;
-
-  double yaw_vel_prev_;
-
-  double yaw_vel_time_prev_;
 };
 }
 
