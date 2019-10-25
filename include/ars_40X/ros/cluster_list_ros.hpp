@@ -26,6 +26,8 @@ class ClusterListROS {
 
   void send_cluster_1_general();
 
+  void send_cluster_2_quality();
+
  private:
   std::string frame_id_;
 
@@ -40,6 +42,8 @@ class ClusterListROS {
   cluster_list::Cluster_2_Quality *cluster_2_quality_;
 
   ARS_40X_CAN *ars_40X_can_;
+
+  int cluster_id_;
 };
 }
 

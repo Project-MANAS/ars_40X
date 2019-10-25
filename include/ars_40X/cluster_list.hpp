@@ -112,11 +112,11 @@ class Cluster_2_Quality {
 
   int get_cluster_id();
 
-  int get_cluster_long_dist_rms();
+  double get_cluster_long_dist_rms();
 
-  int get_cluster_long_rel_vel_rms();
+  double get_cluster_long_rel_vel_rms();
 
-  int get_cluster_lat_dist_rms();
+  double get_cluster_lat_dist_rms();
 
   int get_cluster_pdh0();
 
@@ -130,6 +130,17 @@ class Cluster_2_Quality {
 
  private:
   cluster_2_quality cluster_2_quality_msg;
+
+  double signal_value_table[32] = {
+      0.005, 0.006, 0.008, 0.011,
+      0.014, 0.018, 0.023, 0.029,
+      0.038, 0.049, 0.063, 0.081,
+      0.105, 0.135, 0.174, 0.224,
+      0.288, 0.371, 0.478, 0.616,
+      0.794, 1.023, 1.317, 1.697,
+      2.187, 2.817, 3.630, 4.676,
+      6.025, 7.762, 10.000
+  };
 };
 }
 }

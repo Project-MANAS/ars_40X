@@ -31,6 +31,8 @@ class ARS_40X_ROS : public ARS_40X_CAN {
 
   void send_cluster_1_general();
 
+  void send_cluster_2_quality();
+
   void send_object_0_status();
 
   void send_object_1_general();

@@ -80,6 +80,8 @@ class ARS_40X_CAN {
 
   virtual void send_cluster_1_general() {};
 
+  virtual void send_cluster_2_quality() {};
+
   virtual void send_object_0_status() {};
 
   virtual void send_object_1_general() {};

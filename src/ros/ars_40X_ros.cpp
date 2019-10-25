@@ -36,6 +36,10 @@ void ARS_40X_ROS::send_cluster_1_general() {
   cluster_list_ros_.send_cluster_1_general();
 }
 
+void ARS_40X_ROS::send_cluster_2_quality() {
+  cluster_list_ros_.send_cluster_2_quality();
+}
+
 void ARS_40X_ROS::send_object_0_status() {
   object_list_ros_.send_object_0_status();
 }

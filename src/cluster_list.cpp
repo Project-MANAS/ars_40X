@@ -64,7 +64,7 @@ double Cluster_1_General::get_cluster_lat_rel_vel() {
 }
 
 int Cluster_1_General::get_cluster_dyn_prop() {
-  return cluster_1_general_msg.data.Cluster_DynProp;
+  return static_cast<int>(cluster_1_general_msg.data.Cluster_DynProp);
 }
 
 double Cluster_1_General::get_cluster_rcs() {
@@ -79,6 +79,44 @@ Cluster_2_Quality::Cluster_2_Quality() {
 }
 
 Cluster_2_Quality::~Cluster_2_Quality() {
+}
+
+int Cluster_2_Quality::get_cluster_id() {
+  return static_cast<int>(cluster_2_quality_msg.data.Cluster_ID);
+}
+
+double Cluster_2_Quality::get_cluster_long_dist_rms() {
+  return signal_value_table[cluster_2_quality_msg.data.Cluster_DistLong_rms];
+}
+
+double Cluster_2_Quality::get_cluster_lat_dist_rms() {
+  return signal_value_table[cluster_2_quality_msg.data.Cluster_DistLat_rms1 << 2
+      | cluster_2_quality_msg.data.Cluster_DistLat_rms2];
+}
+
+double Cluster_2_Quality::get_cluster_long_rel_vel_rms() {
+  return signal_value_table[cluster_2_quality_msg.data.Cluster_VrelLong_rms];
+}
+
+double Cluster_2_Quality::get_cluster_lat_rel_vel_rms() {
+  return signal_value_table[cluster_2_quality_msg.data.Cluster_VrelLat_rms1 << 4
+      | cluster_2_quality_msg.data.Cluster_VrelLat_rms2];
+}
+
+int Cluster_2_Quality::get_cluster_pdh0() {
+  return static_cast<int>(cluster_2_quality_msg.data.Cluster_Pdh0);
+}
+
+int Cluster_2_Quality::get_cluster_ambiguity_state() {
+  return static_cast<int>(cluster_2_quality_msg.data.Cluster_AmbigState);
+}
+
+int Cluster_2_Quality::get_cluster_validity_state() {
+  return static_cast<int>(cluster_2_quality_msg.data.Cluster_InvalidState);
+}
+
+cluster_2_quality *Cluster_2_Quality::get_cluster_2_quality() {
+  return &cluster_2_quality_msg;
 }
 }
 }

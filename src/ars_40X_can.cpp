@@ -37,6 +37,10 @@ bool ARS_40X_CAN::receive_radar_data() {
       send_cluster_1_general();
       break;
 
+    case Cluster_2_Quality:memcpy(cluster_2_quality_.get_cluster_2_quality()->raw_data, data, dlc);
+      send_cluster_2_quality();
+      break;
+
     case Object_0_Status:memcpy(object_0_status_.get_object_0_status()->raw_data, data, dlc);
       send_object_0_status();
       break;
