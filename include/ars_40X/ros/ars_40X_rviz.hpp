@@ -19,6 +19,17 @@ enum {
   RESERVED
 };
 
+enum {
+  INVALID,
+  PERCENT_25,
+  PERCENT_50,
+  PERCENT_75,
+  PERCENT_90,
+  PERCENT_99,
+  PERCENT_99_9,
+  PERCENT_100
+};
+
 class ContinentalRadarRViz {
  public:
   ContinentalRadarRViz();
@@ -33,6 +44,8 @@ class ContinentalRadarRViz {
   ros::Publisher clusters_pub_;
 
   ros::Publisher objects_pub_;
+
+  ros::Publisher velocity_pub_;
 
   ros::Subscriber clusters_sub_;
 
