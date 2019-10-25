@@ -4,9 +4,6 @@
 
 #include "ars_40X/object_list.hpp"
 
-#include <iostream>
-#include <ars_40X/object_list.hpp>
-
 namespace ars_40X {
 namespace object_list {
 Object_0_Status::Object_0_Status() {
@@ -114,6 +111,10 @@ double Object_2_Quality::get_object_lat_rel_accel_rms() {
 
 int Object_2_Quality::get_object_meas_state() {
   return static_cast<int>(object_2_quality_msg.data.Obj_MeasState);
+}
+
+int Object_2_Quality::get_object_prob_of_exist() {
+  return static_cast<int>(object_2_quality_msg.data.Obj_ProbOfExist);
 }
 
 double Object_2_Quality::get_object_orientation_rms() {

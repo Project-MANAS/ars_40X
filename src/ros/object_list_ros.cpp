@@ -4,7 +4,6 @@
 
 #include "ars_40X/ros/object_list_ros.hpp"
 
-#include <iostream>
 #include <geometry_msgs/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
@@ -63,6 +62,8 @@ void ObjectListROS::send_object_2_quality() {
   object_list.objects[object_2_quality_id_].relative_acceleration.covariance[7] =
       pow(object_2_quality_->get_object_lat_rel_accel_rms(), 2);
   object_list.objects[object_2_quality_id_].meas_state = object_2_quality_->get_object_meas_state();
+  object_list.objects[object_2_quality_id_].prob_of_exist =
+      object_2_quality_->get_object_prob_of_exist();
   ++object_2_quality_id_;
 }
 

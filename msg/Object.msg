@@ -11,3 +11,4 @@ float32 orientation_angle
 int8 dynamic_property
 int8 class_type
 int8 meas_state
+int8 prob_of_exist
