@@ -21,7 +21,7 @@ roslaunch ars_40X ars_40X.launch visualize:=true obstacle_array:=true
 |/radar_status|ars_40X/RadarStatus|Describe the radar configuration|0x201|
 |/ars_40X/clusters|ars_40X/ClusterList|Raw clusters data from radar|0x600, 0x701|
 |/ars_40X/objects|ars_40X/ObjectList|Raw objects data from radar|0x60A, 0x60B, 0x60C, 0x60D|
-|/visualize_clusters|visualization_msgs/Marker|Clusters markers for RViz visualization| - |
+|/visualize_clusters|visualization_msgs/MarkerArray|Clusters markers for RViz visualization| - |
 |/visualize_objects|visualization_msgs/MarkerArray|Object markers for RViz visualization| - |
 
 #### Subscription
