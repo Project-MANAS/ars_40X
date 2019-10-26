@@ -131,14 +131,18 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     if (isnan(yaw)) {
       continue;
     }
-    pos1.x = object.position.pose.position.x - (object.width / 2) * sin((yaw * M_PI) / 180.0);
-    pos1.y = object.position.pose.position.y + (object.width / 2) * cos((yaw * M_PI) / 180.0);
-    pos2.x = object.position.pose.position.x + (object.width / 2) * sin((yaw * M_PI) / 180.0);
-    pos2.y = object.position.pose.position.y - (object.width / 2) * cos((yaw * M_PI) / 180.0);
-    pos3.x = pos2.x + (object.length) * cos((yaw * M_PI) / 180.0);
-    pos3.y = pos2.y + (object.length) * sin((yaw * M_PI) / 180.0);
-    pos4.x = pos1.x + (object.length) * cos((yaw * M_PI) / 180.0);
-    pos4.y = pos1.y + (object.length) * sin((yaw * M_PI) / 180.0);
+    auto width_sin = (object.width / 2) * sin((yaw * M_PI) / 180.0);
+    auto width_cos = (object.width / 2) * cos((yaw * M_PI) / 180.0);
+    auto length_sin = (object.length / 2) * sin((yaw * M_PI) / 180.0);
+    auto length_cos = (object.length / 2) * cos((yaw * M_PI) / 180.0);
+    pos1.x = object.position.pose.position.x - width_sin - length_cos;
+    pos1.y = object.position.pose.position.y + width_cos - length_sin;
+    pos2.x = object.position.pose.position.x + width_sin - length_cos;
+    pos2.y = object.position.pose.position.y - width_cos - length_sin;
+    pos3.x = object.position.pose.position.x + width_sin + length_cos;
+    pos3.y = object.position.pose.position.y - width_cos + length_sin;
+    pos4.x = object.position.pose.position.x - width_sin + length_cos;
+    pos4.y = object.position.pose.position.y + width_cos + length_sin;
     marker.points.push_back(pos1);
     marker.points.push_back(pos2);
     marker.points.push_back(pos3);
