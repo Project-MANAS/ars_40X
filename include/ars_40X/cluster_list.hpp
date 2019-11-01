@@ -51,7 +51,7 @@ typedef union cluster_2_quality {
     uint64_t Cluster_DistLat_rms2:2;
     uint64_t Cluster_Pdh0:3;
     uint64_t Reserved:1;
-    uint64_t Cluster_VrelLat_rms2:5;
+    uint64_t Cluster_VrelLat_rms2:4;
     uint64_t Cluster_AmbigState:3;
     uint64_t Cluster_InvalidState:5;
   } data = {};
