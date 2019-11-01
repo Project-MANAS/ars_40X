@@ -75,16 +75,24 @@ Visualization Manager:
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
+      Marker Topic: /visualize_clusters
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
       Marker Topic: /visualize_objects
       Name: MarkerArray
       Namespaces:
         {}
       Queue Size: 100
       Value: true
-    - Class: rviz/Marker
+    - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /visualize_clusters
-      Name: Marker
+      Marker Topic: /visualize_velocity
+      Name: MarkerArray
       Namespaces:
         {}
       Queue Size: 100
@@ -135,7 +143,7 @@ Visualization Manager:
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: ThirdPersonFollower (rviz)
-      Yaw: 2.9254162311553955
+      Yaw: 2.760416030883789
     Saved: ~
 Window Geometry:
   Displays:

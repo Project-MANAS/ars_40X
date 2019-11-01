@@ -131,26 +131,21 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     if (isnan(yaw)) {
       continue;
     }
-    auto width_sin = (object.width / 2) * sin((yaw * M_PI) / 180.0);
-    auto width_cos = (object.width / 2) * cos((yaw * M_PI) / 180.0);
-    auto length_sin = (object.length / 2) * sin((yaw * M_PI) / 180.0);
-    auto length_cos = (object.length / 2) * cos((yaw * M_PI) / 180.0);
-    pos1.x = object.position.pose.position.x - width_sin - length_cos;
-    pos1.y = object.position.pose.position.y + width_cos - length_sin;
-    pos2.x = object.position.pose.position.x + width_sin - length_cos;
-    pos2.y = object.position.pose.position.y - width_cos - length_sin;
-    pos3.x = object.position.pose.position.x + width_sin + length_cos;
-    pos3.y = object.position.pose.position.y - width_cos + length_sin;
-    pos4.x = object.position.pose.position.x - width_sin + length_cos;
-    pos4.y = object.position.pose.position.y + width_cos + length_sin;
+    marker.pose = object.position.pose;
+    pos1.x = object.length / 2;
+    pos1.y = object.width / 2;
+    pos2.x = object.length / 2;
+    pos2.y = -object.width / 2;
+    pos3.x = -object.length / 2;
+    pos3.y = -object.width / 2;
+    pos4.x = -object.length / 2;
+    pos4.y = object.width / 2;
     marker.points.push_back(pos1);
     marker.points.push_back(pos2);
     marker.points.push_back(pos3);
     marker.points.push_back(pos4);
     marker.points.push_back(pos1);
     marker.scale.x = 0.1;
-    marker.scale.y = 0.1;
-    marker.scale.z = 0.1;
 
     switch (object.class_type) {
       case POINT: {
@@ -264,8 +259,6 @@ void ContinentalRadarRViz::objects_callback(ars_40X::ObjectList object_list) {
     velocity.text = std::to_string(hypot(object.relative_velocity.twist.linear.x,
                                          object.relative_velocity.twist.linear.y));
     velocity.pose = object.position.pose;
-    velocity.scale.x = 1;
-    velocity.scale.y = 1;
     velocity.scale.z = 1;
     velocity.color.a = 1;
 
