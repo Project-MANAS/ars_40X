@@ -37,6 +37,8 @@ void ClusterListROS::send_cluster_1_general() {
   cluster.position.pose.position.y = cluster_1_general_->get_cluster_lat_dist();
   cluster.relative_velocity.twist.linear.x = cluster_1_general_->get_cluster_long_rel_vel();
   cluster.relative_velocity.twist.linear.y = cluster_1_general_->get_cluster_lat_rel_vel();
+  cluster.dynamic_property = cluster_1_general_->get_cluster_dyn_prop();
+  cluster.rcs = cluster_1_general_->get_cluster_rcs();
   cluster_list.clusters.push_back(cluster);
 }
 

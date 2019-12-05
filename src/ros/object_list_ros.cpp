@@ -43,6 +43,8 @@ void ObjectListROS::send_object_1_general() {
   object.position.pose.position.y = object_1_general_->get_object_lat_dist();
   object.relative_velocity.twist.linear.x = object_1_general_->get_object_long_rel_vel();
   object.relative_velocity.twist.linear.y = object_1_general_->get_object_lat_rel_vel();
+  object.dynamic_property = object_1_general_->get_object_dyn_prop();
+  object.rcs = object_1_general_->get_object_rcs();
   object_list.objects.push_back(object);
 }
 
