@@ -1,10 +1,13 @@
 <launch>
   <arg name="visualize" default="true"/>
   <arg name="obstacle_array" default="false"/>
+  <arg name="publish_radardetection" default="true"/>
 
   <node pkg="ars_40X" type="ars_40X_ros" name="ars_40X_ros" output="screen">
     <!--<param name="frame_id" value="radar_link"/>-->
   </node>
+  
+  <node pkg="ars_40X" type="convert_to_radardetectionlist.py" name="object_list_converter" output="screen" if="$(arg publish_radardetection)" />
 
   <group if="$(arg visualize)">
     <node pkg="ars_40X" type="ars_40X_rviz" name="ars_40X_rviz"/>
