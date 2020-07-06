@@ -2,9 +2,12 @@
   <arg name="visualize" default="true"/>
   <arg name="obstacle_array" default="false"/>
   <arg name="publish_radardetection" default="true"/>
+  <arg name="frame_id" default="radar" />
+  <arg name="sensor_id" default="0" />
 
   <node pkg="ars_40X" type="ars_40X_ros" name="ars_40X_ros" output="screen">
-    <!--<param name="frame_id" value="radar_link"/>-->
+    <param name="frame_id" value="$(arg frame_id)"/>
+    <param name="sensor_id" value="$(arg sensor_id)"/>
   </node>
   
   <node pkg="ars_40X" type="convert_to_radardetectionlist.py" name="object_list_converter" output="screen" if="$(arg publish_radardetection)" />
