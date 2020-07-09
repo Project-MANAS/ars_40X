@@ -46,7 +46,9 @@ class ARS_40X_CAN {
  public:
   ARS_40X_CAN();
 
-  ARS_40X_CAN(std::string port);
+  ARS_40X_CAN(uint8_t sensor_id);
+
+  ARS_40X_CAN(std::string port, uint8_t sensor_id);
 
   ~ARS_40X_CAN();
 
@@ -92,6 +94,8 @@ class ARS_40X_CAN {
 
   virtual void send_radar_state() {};
 
+  void update_sensor_id(uint8_t sensor_id);
+
  private:
   socket_can::SocketCAN can_;
 
@@ -116,6 +120,8 @@ class ARS_40X_CAN {
   radar_state::RadarState radar_state_;
 
   radar_cfg::RadarCfg radar_cfg_;
+
+  uint8_t sensor_id_offset_;
 };
 }
 

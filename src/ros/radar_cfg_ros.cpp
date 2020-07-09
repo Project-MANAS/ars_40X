@@ -49,6 +49,7 @@ bool RadarCfgROS::set_sensor_id(
     return false;
   }
   ars_40X_can_->send_radar_data(can_messages::RadarCfg);
+  ars_40X_can_->update_sensor_id(req.sensor_id);
   return true;
 }
 

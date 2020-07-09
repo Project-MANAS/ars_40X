@@ -1,18 +1,24 @@
 <launch>
   <arg name="visualize" default="true"/>
   <arg name="obstacle_array" default="false"/>
+  <arg name="publish_radardetection" default="true"/>
+  <arg name="frame_id" default="radar" />
+  <arg name="sensor_id" default="0" />
 
-  <node pkg="ars_40X" type="ars_40X_ros" name="ars_40X_ros" output="screen">
-    <!--<param name="frame_id" value="radar_link"/>-->
+  <node pkg="ars_40X" type="ars_40X_ros" name="$(anon ars_40X_ros)" output="screen">
+    <param name="frame_id" value="$(arg frame_id)"/>
+    <param name="sensor_id" value="$(arg sensor_id)"/>
   </node>
+  
+  <node pkg="ars_40X" type="convert_to_radardetectionlist.py" name="$(anon object_list_converter)" output="screen" if="$(arg publish_radardetection)" />
 
   <group if="$(arg visualize)">
-    <node pkg="ars_40X" type="ars_40X_rviz" name="ars_40X_rviz"/>
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ars_40X)/rviz_cfg/ars_40X.rviz"/>
+    <node pkg="ars_40X" type="ars_40X_rviz" name="$(anon ars_40X_rviz)"/>
+    <node pkg="rviz" type="rviz" name="$(anon rviz)" args="-d $(find ars_40X)/rviz_cfg/ars_40X.rviz"/>
   </group>
 
   <group if="$(arg obstacle_array)">
-    <node pkg="ars_40X" type="ars_40X_obstacle_array" name="ars_40X_obstacle_array">
+    <node pkg="ars_40X" type="ars_40X_obstacle_array" name="$(anon ars_40X_obstacle_array)">
       <!--<remap from="obstacles" to="/move_base/TebLocalPlannerROS/obstacles"/>-->
     </node>
   </group>

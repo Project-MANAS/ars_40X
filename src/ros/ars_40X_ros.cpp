@@ -14,7 +14,10 @@ ARS_40X_ROS::ARS_40X_ROS(ros::NodeHandle &nh) :
     radar_state_ros_(nh_, this) {
   ros::NodeHandle private_nh("~");
   std::string frame_id;
+  int sensor_id;
   private_nh.param<std::string>("frame_id", frame_id, std::string("radar"));
+  private_nh.param<int>("sensor_id", sensor_id, 0);
+  update_sensor_id(sensor_id);
   cluster_list_ros_.set_frame_id(frame_id);
   object_list_ros_.set_frame_id(frame_id);
 }

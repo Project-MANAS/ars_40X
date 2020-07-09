@@ -17,6 +17,9 @@ roslaunch ars_40X ars_40X.launch visualize:=true obstacle_array:=true
 
 - **visualize** *(default:"true")* : Launches RViz to display the clusters/obstacles as markers.
 - **obstacle_array** *(default:"false")* : Launches ars_40X_obstacle_array node which publishes obstacles as geometry_msgs/Polygon
+- **frame_id** *(default:"radar")* : Sets the `frame_id` for published markers
+- **sensor_id** *(default:0)* : The sensor_id of the radar to use (0-7), determines the message IDs on the CAN bus (see radar documentation)
+- **publish_radardetection** *(default:"true")* : Launches a converter, which converts from object lists to ROS radar detection messages
 
 #### Publications
 
