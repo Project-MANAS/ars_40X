@@ -21,10 +21,6 @@ roslaunch ars_40X ars_40X.launch visualize:=true obstacle_array:=true
 - **sensor_id** *(default:0)* : The sensor_id of the radar to use (0-7), determines the message IDs on the CAN bus (see radar documentation)
 - **publish_radardetection** *(default:"true")* : Launches a converter, which converts from object lists to ROS radar detection messages
 
-<arg name="publish_radardetection" default="true"/>
-  <arg name="frame_id" default="radar" />
-  <arg name="sensor_id" default="0" />
-
 #### Publications
 
 |Message|Type|Description|Message Box|
